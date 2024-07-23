@@ -1,0 +1,108 @@
+/*Thin*/
+@font-face {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url(../public/font/Pretendard-Thin.otf) format("truetype"), url(../public/font/Pretendard-Thin.ttf) format("ttf");
+}
+
+/*ExtraLight*/
+@font-face {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url(../public/font/Pretendard-ExtraLight.otf) format("truetype"), url(../public/font/Pretendard-ExtraLight.ttf) format("ttf");
+}
+
+/*Light*/
+@font-face {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(../public/font/Pretendard-Light.otf) format("truetype"), url(../public/font/Pretendard-Light.ttf) format("ttf");
+}
+
+/*Regular*/
+@font-face {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../public/font/Pretendard-Regular.otf) format("truetype"), url(../public/font/Pretendard-Regular.ttf) format("ttf");
+}
+
+/*Medium*/
+@font-face {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(../public/font/Pretendard-Medium.ttf) format("ttf"), url(../public/font/Pretendard-Medium.otf) format("truetype");
+}
+
+/*Semibold*/
+@font-face {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(../public/font/Pretendard-SemiBold.ttf) format("ttf"), url(../public/font/Pretendard-SemiBold.otf) format("truetype");
+}
+
+/*Bold*/
+@font-face {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(../public/font/Pretendard-Bold.ttf) format("ttf"), url(../public/font/Pretendard-Bold.otf) format("truetype");
+}
+
+/*Extrabold*/
+@font-face {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(../public/font/Pretendard-ExtraBold.ttf) format("ttf"), url(../public/font/Pretendard-ExtraBold.otf) format("truetype");
+}
+
+/*Black*/
+@font-face {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url(../public/font/Pretendard-Black.ttf) format("ttf"), url(../public/font/Pretendard-Black.otf) format("truetype");
+}
+
+/*나눔명조*/
+/*Regular*/
+@font-face {
+  font-family: "NanumMyeongjo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../public/font/NanumMyeongjo-Regular.ttf) format("ttf");
+}
+
+/*Bold*/
+@font-face {
+  font-family: "NanumMyeongjo";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(../public/font/NanumMyeongjo-Bold.ttf) format("ttf");
+}
+
+/*ExtraBold*/
+@font-face {
+  font-family: "NanumMyeongjo";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(../public/font/NanumMyeongjo-ExtraBold.ttf) format("ttf");
+}
