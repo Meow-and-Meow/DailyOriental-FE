@@ -11,46 +11,6 @@ export const MyPage = styled.div`
     align-items: center;
 `;
 
-export const back = styled.img``;
-
-export const profile = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 93px;
-    height: 40px;
-`;
-
-export const profile_img = styled.div``;
-
-export const profile_text = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-`;
-
-export const profile_name = styled.div`
-    display: flex;
-    width: 56px;
-    height: 24px;
-    font-weight: 600;
-    font-size: 15px;
-    line-height: 17.9px;
-    color: #f5f5f5;
-`;
-
-export const profile_status = styled.div`
-    display: flex;
-    width: 56px;
-    height: 24px;
-    font-weight: 600;
-    font-size: 9px;
-    line-height: 10.74px;
-    color: #f5f5f5;
-`;
-
 export const container = styled.div`
     display: flex;
     flex-direction: column;
@@ -73,11 +33,41 @@ export const title = styled.div`
     color: #f5f5f5;
 `;
 
-export const result = styled.img`
+export const result = styled.div`
     display: flex;
-    background-color: white;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
     width: 312px;
     height: 82px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    background-color: #f5f5f5;
+`;
+
+export const result_img = styled.div`
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    width: 122px;
+    height: 44px;
+    position: absolute;
+    top: 137px;
+    left: 210px;
+`;
+
+export const result_text = styled.div`
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: 95px;
+    height: 24px;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 23.87px;
+    color: #79212f;
 `;
 
 export const sub_container = styled.div`
@@ -154,5 +144,5 @@ export const other_func = styled.div`
     font-size: 15px;
     line-height: 17.9px;
     color: #f5f5f5;
-    margin: 10px 0;
+    margin: 5px 0;
 `;

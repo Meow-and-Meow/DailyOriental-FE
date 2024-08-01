@@ -13,6 +13,10 @@ export const Join = styled.div`
 
 export const title = styled.div`
     display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+    margin-top: 94px;
 `;
 
 export const sub_title = styled.div`
@@ -25,9 +29,16 @@ export const sub_title = styled.div`
     font-size: 20px;
     line-height: 23.87px;
     color: #28272a;
+    margin-right: 15px;
 `;
 
-export const logo_title = styled.div``;
+export const logo_title = styled.div`
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    width: 280px;
+    height: 42px;
+`;
 
 export const login = styled.form`
     display: flex;

@@ -13,9 +13,19 @@ export const SignUp = styled.div`
 
 export const title = styled.div`
     display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+    margin-top: 46px;
 `;
 
-export const logo_title = styled.div``;
+export const logo_title = styled.div`
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    width: 280px;
+    height: 42px;
+`;
 
 export const sub_title = styled.div`
     display: flex;
@@ -27,6 +37,7 @@ export const sub_title = styled.div`
     font-size: 20px;
     line-height: 23.87px;
     color: #28272a;
+    margin-right: 15px;
 `;
 
 export const signup = styled.form`
@@ -138,7 +149,7 @@ export const btn = styled.button`
     border-radius: 20px;
     background-color: #79212f;
     border: none;
-    margin-top: 15px;
+    margin-top: 85px;
     margin-left: 143.5px;
     font-weight: 600;
     font-size: 12px;

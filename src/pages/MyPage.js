@@ -3,6 +3,10 @@ import * as C from "../styles/CommonStyle";
 import * as M from "../styles/MyPageStyle";
 
 import HeaderMypage from "../components/headerMypage";
+import text_1 from "../img/text_1.png";
+import text_2 from "../img/text_2.png";
+import text_3 from "../img/text_3.png";
+import text_4 from "../img/text_4.png";
 
 function MyPage() {
     const [message, setMessage] = useState("누르면 보여요");
@@ -18,16 +22,14 @@ function MyPage() {
                         <C.PageSpace>
                             <M.MyPage>
                                 <HeaderMypage />
-                                <M.profile>
-                                    <M.profile_img></M.profile_img>
-                                    <M.profile_text>
-                                        <M.profile_name>김덕성</M.profile_name>
-                                        <M.profile_status>회원</M.profile_status>
-                                    </M.profile_text>
-                                </M.profile>
-                                <M.container>
+                                <M.container style={{ marginTop: "40px" }}>
                                     <M.title>나의 사상체질</M.title>
-                                    <M.result></M.result>
+                                    <M.result>
+                                        <M.result_img>
+                                            <img src={text_1}></img>
+                                        </M.result_img>
+                                        <M.result_text>태양인</M.result_text>
+                                    </M.result>
                                 </M.container>
                                 <M.container style={{ height: "245px" }}>
                                     <M.title>설정</M.title>
@@ -56,7 +58,7 @@ function MyPage() {
                                 </M.container>
                                 <M.container>
                                     <M.title>
-                                        공유{" "}
+                                        공유
                                         <p
                                             style={{
                                                 display: "flex",

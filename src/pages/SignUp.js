@@ -3,6 +3,7 @@ import * as C from "../styles/CommonStyle";
 import * as S from "../styles/SignUpStyle";
 
 import HeaderRegister from "../components/headerRegister";
+import logo from "../img/title.png";
 
 function SignUp() {
     const [selectedGender, setSelectedGender] = useState("");
@@ -46,7 +47,9 @@ function SignUp() {
                             <S.SignUp>
                                 <HeaderRegister />
                                 <S.title>
-                                    <S.logo_title></S.logo_title>
+                                    <S.logo_title>
+                                        <img src={logo} style={{ width: "124px" }}></img>
+                                    </S.logo_title>
                                     <S.sub_title>회원가입</S.sub_title>
                                 </S.title>
                                 <S.signup onSubmit={handleSubmit}>
