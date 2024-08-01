@@ -22,13 +22,11 @@ const moveTop = (y, translateY) => keyframes`
     }
 `;
 
-export const logo = styled.img`
+export const logo = styled.div`
     width: 160px;
     height: 160px;
     z-index: 4;
-    background-color: white;
     position: absolute;
     left: 101px;
-    top: 320px;
     animation: ${moveTop(320, 278)} 1s ease-in-out forwards;
 `;
