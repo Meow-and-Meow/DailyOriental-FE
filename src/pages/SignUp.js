@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import * as C from "../styles/CommonStyle";
 import * as S from "../styles/SignUpStyle";
 
+import HeaderRegister from "../components/headerRegister";
+
 function SignUp() {
     const [selectedGender, setSelectedGender] = useState("");
     const [formData, setFormData] = useState({
@@ -42,6 +44,7 @@ function SignUp() {
                     <S.Background>
                         <C.PageSpace>
                             <S.SignUp>
+                                <HeaderRegister />
                                 <S.title>
                                     <S.logo_title></S.logo_title>
                                     <S.sub_title>회원가입</S.sub_title>

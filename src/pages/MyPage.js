@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import * as C from "../styles/CommonStyle";
 import * as M from "../styles/MyPageStyle";
 
+import HeaderMypage from "../components/headerMypage";
+
 function MyPage() {
     const [message, setMessage] = useState("누르면 보여요");
 
@@ -15,7 +17,7 @@ function MyPage() {
                     <M.Background>
                         <C.PageSpace>
                             <M.MyPage>
-                                <M.back></M.back>
+                                <HeaderMypage />
                                 <M.profile>
                                     <M.profile_img></M.profile_img>
                                     <M.profile_text>
