@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import * as C from "../styles/CommonStyle";
 import * as A from "../styles/AIStyle";
 
 import Header from "../components/header";
+import search from "../img/icon_search.png";
+import doctor from "../img/AIdoctor.png";
 
 function AI() {
     const mainTitle = "사상체질 건강관리";
     const subTitle = "AI 허준과 함께하는 매일 한방";
+    const [selectedType, setSelectedType] = useState("");
+
+    const handleTypeClick = (type) => {
+        setSelectedType((prev) => (prev === type ? "" : type));
+    };
 
     return (
         <>
@@ -19,15 +26,45 @@ function AI() {
                                 <A.container>
                                     <A.title>체질별 모아보기</A.title>
                                     <A.content>
-                                        <A.btn>태양인</A.btn>
-                                        <A.btn>소양인</A.btn>
-                                        <A.btn>태음인</A.btn>
-                                        <A.btn>소음인</A.btn>
+                                        <A.btn
+                                            value="text1"
+                                            selected={selectedType === "text1"}
+                                            onClick={() => handleTypeClick("text1")}
+                                        >
+                                            태양인
+                                        </A.btn>
+                                        <A.btn
+                                            value="text2"
+                                            selected={selectedType === "text2"}
+                                            onClick={() => handleTypeClick("text2")}
+                                        >
+                                            소양인
+                                        </A.btn>
+                                        <A.btn
+                                            value="text3"
+                                            selected={selectedType === "text3"}
+                                            onClick={() => handleTypeClick("text3")}
+                                        >
+                                            태음인
+                                        </A.btn>
+                                        <A.btn
+                                            value="text4"
+                                            selected={selectedType === "text4"}
+                                            onClick={() => handleTypeClick("text4")}
+                                        >
+                                            소음인
+                                        </A.btn>
                                     </A.content>
                                 </A.container>
                                 <A.search>
-                                    <A.search_icon>A</A.search_icon>
-                                    <A.input placeholder="태양인 건강 관리법을 알려줘" type="text" name="a"></A.input>
+                                    <A.search_icon>
+                                        <img src={search}></img>
+                                    </A.search_icon>
+                                    <A.input
+                                        placeholder="검색창을 통해 AI허준에게 질문해보세요"
+                                        type="text"
+                                        name="a"
+                                    ></A.input>
                                 </A.search>
                                 <A.tip>
                                     <A.tip_text>Tip. 이렇게 물어보면 좋아요</A.tip_text>
@@ -38,11 +75,26 @@ function AI() {
                                     <A.tip_text> ∙ 조심해야하는 생활습관을 알려줘</A.tip_text>
                                 </A.tip>
                                 <A.answer>
-                                    <A.doctor></A.doctor>
+                                    <A.doctor>
+                                        <img src={doctor}></img>
+                                    </A.doctor>
                                     <A.answer_container>
                                         <A.answer_text>
                                             태양인의 건강 관리법을 알려드릴게요. 태양인은 발이 다치기 않도록
-                                            조심해야해요.
+                                            조심해야해요.태양인의 건강 관리법을 알려드릴게요. 태양인은 발이 다치기
+                                            않도록 조심해야해요.태양인의 건강 관리법을 알려드릴게요. 태양인은 발이
+                                            다치기 않도록 조심해야해요.태양인의 건강 관리법을 알려드릴게요. 태양인은
+                                            발이 다치기 않도록 조심해야해요.태양인의 건강 관리법을 알려드릴게요.
+                                            태양인은 발이 다치기 않도록 조심해야해요.태양인의 건강 관리법을
+                                            알려드릴게요. 태양인은 발이 다치기 않도록 조심해야해요.태양인의 건강
+                                            관리법을 알려드릴게요. 태양인은 발이 다치기 않도록 조심해야해요.태양인의
+                                            건강 관리법을 알려드릴게요. 태양인은 발이 다치기 않도록
+                                            조심해야해요.태양인의 건강 관리법을 알려드릴게요. 태양인은 발이 다치기
+                                            않도록 조심해야해요.태양인의 건강 관리법을 알려드릴게요. 태양인은 발이
+                                            다치기 않도록 조심해야해요.태양인의 건강 관리법을 알려드릴게요. 태양인은
+                                            발이 다치기 않도록 조심해야해요.태양인의 건강 관리법을 알려드릴게요.
+                                            태양인은 발이 다치기 않도록 조심해야해요.태양인의 건강 관리법을
+                                            알려드릴게요. 태양인은 발이 다치기 않도록 조심해야해요.
                                         </A.answer_text>
                                     </A.answer_container>
                                 </A.answer>

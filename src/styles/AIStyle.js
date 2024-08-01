@@ -11,8 +11,6 @@ export const AI = styled.div`
     align-items: center;
 `;
 
-export const back = styled.img``;
-
 export const container = styled.div`
     display: flex;
     flex-direction: column;
@@ -64,6 +62,8 @@ export const btn = styled.button`
     font-size: 12px;
     line-height: 14.32px;
     color: #3a2929;
+    background-color: ${(props) => (props.selected ? "#79212f" : "#f5f5f5")};
+    color: ${(props) => (props.selected ? "#f5f5f5" : "#3a2929")};
 `;
 
 export const search = styled.div`
@@ -114,14 +114,78 @@ export const input = styled.input`
     margin-left: 18.04px;
 `;
 
-export const tip = styled.div``;
+export const tip = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    text-align: center;
+    box-sizing: border-box;
+    width: 190px;
+    height: 103px;
+    padding: 17px 0;
+    position: absolute;
+    top: 289px;
+    left: 50px;
+`;
 
-export const tip_text = styled.div``;
+export const tip_text = styled.div`
+    color: #f7db8d;
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 11.93px;
+`;
 
-export const answer = styled.div``;
+export const answer = styled.div`
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 360px;
+    height: 450px;
+    margin-top: 77px;
+`;
 
-export const doctor = styled.img``;
+export const doctor = styled.div`
+    display: flex;
+    width: 53px;
+    height: 62px;
+    position: absolute;
+    top: 353px;
+    left: 283px;
+`;
 
-export const answer_container = styled.div``;
+export const answer_container = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 360px;
+    height: 100%;
+    box-sizing: border-box;
+    border-radius: 20px 20px 0 0;
+    background-color: #f5f5f5;
+    padding: 17px 15px 0 34px;
+    margin-top: 62px;
+`;
 
-export const answer_text = styled.div``;
+export const answer_text = styled.div`
+    color: #28272a;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 17.9px;
+    max-height: 340px;
+    overflow-y: scroll;
+    padding-right: 27px;
+    padding-top: 17px;
+
+    &::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #79212f;
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #d9d9d9;
+        border-radius: 10px;
+    }
+`;
