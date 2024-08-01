@@ -2,6 +2,8 @@ import React from "react";
 import * as C from "../styles/CommonStyle";
 import * as M from "../styles/MyPageStyle";
 
+import HeaderMypage from "../components/headerMypage";
+
 function MyPage() {
   return (
     <>
@@ -9,7 +11,9 @@ function MyPage() {
         <C.Center>
           <M.Background>
             <C.PageSpace>
-              <M.MyPage></M.MyPage>
+              <M.MyPage>
+                <HeaderMypage />
+              </M.MyPage>
             </C.PageSpace>
           </M.Background>
         </C.Center>
