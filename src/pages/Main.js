@@ -4,6 +4,7 @@ import * as C from "../styles/CommonStyle";
 import * as M from "../styles/MainStyle";
 
 import HeaderAlarm from "../components/headerAlarm";
+import MainBox from "../components/mainBox";
 import titleImg from "../img/title.png";
 import testBtn from "../img/Arch_test_btn_650x650.png";
 import massageBtn from "../img/Arch_massage_btn_650x650.png";
@@ -18,6 +19,8 @@ function Main() {
   const handleNavLinkClick = (path) => {
     navigate(path);
   };
+
+  const category = "test";
 
   return (
     <>
@@ -56,7 +59,7 @@ function Main() {
                   </M.MyPage>
                 </M.MainY>
                 <M.Tip>Tip</M.Tip>
-                <M.TipBox></M.TipBox>
+                <MainBox category={category} />
                 <M.Boxs>
                   <M.SubBox onClick={() => handleNavLinkClick("/mission")}>
                     <M.SubTitle>오늘의 미션 확인하기</M.SubTitle>
