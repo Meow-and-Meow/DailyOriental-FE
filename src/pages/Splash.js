@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import * as C from "../styles/CommonStyle";
 import * as S from "../styles/SplashStyle";
+
 import logo_r from "../img/logo_r.png";
 
 function Splash() {
+    const navigate = useNavigate();
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            navigate("/main");
+        }, 1500);
+        return () => clearTimeout(timer);
+    }, [navigate]);
+
     return (
         <>
             <C.Page>

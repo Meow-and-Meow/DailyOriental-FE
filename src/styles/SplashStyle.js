@@ -27,6 +27,7 @@ export const logo = styled.div`
     height: 160px;
     z-index: 4;
     position: absolute;
-    left: 101px;
+    display: flex;
+    justisfy-content: center;
     animation: ${moveTop(320, 278)} 1s ease-in-out forwards;
 `;
