@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Background = styled.div`
-    background-color: #f5f5f5;
+    background-color: #28272a;
 `;
 
 export const Join = styled.div`
@@ -9,6 +9,18 @@ export const Join = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+`;
+
+export const sub_background = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    background-color: #f5f5f5;
+    border-radius: 15rem 0 0 0;
+    box-shadow: inset 7px -8px 4px rgba(0, 0, 0, 0.15);
 `;
 
 export const title = styled.div`
@@ -25,6 +37,7 @@ export const sub_title = styled.div`
     align-items: center;
     width: 280px;
     height: 24px;
+    font-family: "Pretendard";
     font-weight: 600;
     font-size: 20px;
     line-height: 23.87px;
@@ -65,6 +78,7 @@ export const label = styled.label`
     align-items: center;
     width: 64px;
     height: 24px;
+    font-family: "Pretendard";
     font-weight: 600;
     font-size: 15px;
     line-height: 17.9px;
@@ -81,12 +95,14 @@ export const input = styled.input`
     background-color: #f5f5f5;
     &::placeholder {
         color: rgb(99, 99, 99, 0.5);
+        font-family: "Pretendard";
         text-align: center;
         font-weight: 600;
         font-size: 15px;
         line-height: 17.9px;
     }
     color: #28272a;
+    font-family: "Pretendard";
     font-weight: 600;
     font-size: 15px;
     line-height: 17.9px;
@@ -103,6 +119,7 @@ export const btn = styled.button`
     background-color: #79212f;
     border: none;
     margin-top: 15px;
+    font-family: "Pretendard";
     font-weight: 600;
     font-size: 12px;
     line-height: 14.32px;
@@ -126,6 +143,7 @@ export const easy_login = styled.div`
 `;
 
 export const login_title = styled.div`
+    font-family: "Pretendard";
     font-weight: 600;
     font-size: 12px;
     line-height: 14.32px;
@@ -144,6 +162,7 @@ export const other_func = styled.div`
 
 export const content = styled.div`
     display: flex;
+    font-family: "Pretendard";
     font-weight: 600;
     font-size: 12px;
     line-height: 14.32px;
@@ -152,6 +171,7 @@ export const content = styled.div`
 
 export const content_line = styled.div`
     display: flex;
+    font-family: "Pretendard";
     font-weight: 600;
     font-size: 12px;
     line-height: 14.32px;
@@ -166,6 +186,7 @@ export const non_member = styled.div`
     width: 203px;
     height: 24px;
     margin-top: 15px;
+    font-family: "Pretendard";
     font-weight: 600;
     font-size: 12px;
     line-height: 14.32px;

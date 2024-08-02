@@ -27,6 +27,7 @@ export const title = styled.div`
     align-items: center;
     margin-left: 8px;
     margin-bottom: 3px;
+    font-family: "Pretendard";
     font-weight: 600;
     font-size: 15px;
     line-height: 17.9px;
@@ -64,6 +65,7 @@ export const result_text = styled.div`
     align-items: center;
     width: 95px;
     height: 24px;
+    font-family: "Pretendard";
     font-weight: 600;
     font-size: 20px;
     line-height: 23.87px;
@@ -100,6 +102,7 @@ export const sub_title = styled.div`
     align-items: center;
     width: 95px;
     height: 24px;
+    font-family: "Pretendard";
     font-weight: 600;
     font-size: 15px;
     line-height: 17.9px;
@@ -113,6 +116,7 @@ export const text = styled.div`
     align-items: center;
     width: 113px;
     height: 24px;
+    font-family: "Pretendard";
     font-weight: 600;
     font-size: 15px;
     line-height: 17.9px;
@@ -128,6 +132,7 @@ export const btn = styled.div`
     box-sizing: border-box;
     border-radius: 20px;
     background-color: #f5f5f5;
+    font-family: "Pretendard";
     font-weight: 600;
     font-size: 15px;
     line-height: 17.9px;
@@ -140,6 +145,7 @@ export const other_func = styled.div`
     align-items: center;
     width: 312px;
     height: 24px;
+    font-family: "Pretendard";
     font-weight: 600;
     font-size: 15px;
     line-height: 17.9px;
