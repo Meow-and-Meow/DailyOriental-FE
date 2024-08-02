@@ -9,7 +9,8 @@ function MyPage() {
         <C.Center>
           <M.Background>
             <C.PageSpace>
-              <M.MyPage></M.MyPage>
+              <M.MyPage>
+              </M.MyPage>
             </C.PageSpace>
           </M.Background>
         </C.Center>
