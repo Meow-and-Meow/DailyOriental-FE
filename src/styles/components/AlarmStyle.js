@@ -28,8 +28,8 @@ export const DropdownContainer = styled.div`
   z-index: 2500;
   position: absolute;
   text-align: center;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: ${(props) => (props.$hasDropdownItems ? "flex-start" : "center")};
+  align-items: ${(props) => (props.$hasDropdownItems ? "flex-start" : "center")};
   gap: 15px;
 
   width: calc(203px - 4px);
@@ -60,4 +60,12 @@ export const Background = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+export const NoAlarm = styled.div`
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 14.32px;
+  text-align: center;
+  color: #f5f5f580;
 `;

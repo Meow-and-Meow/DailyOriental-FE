@@ -33,13 +33,15 @@ function HeaderAlarm() {
       {isDropdownVisible && (
         <>
           <H.Background onClick={closeMenuClick} />
-          <H.DropdownContainer $isVisible={isDropdownVisible}>
-            {hasDropdownItems && (
+          <H.DropdownContainer $isVisible={isDropdownVisible} $hasDropdownItems={hasDropdownItems}>
+            {hasDropdownItems ? (
               <>
                 <DropdownItem category="mission" />
                 <DropdownItem category="ai" />
                 <DropdownItem category="acupressure" />
               </>
+            ) : (
+              <H.NoAlarm>알림 없음</H.NoAlarm>
             )}
           </H.DropdownContainer>
         </>
