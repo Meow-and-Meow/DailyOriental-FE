@@ -25,7 +25,6 @@ function MyPage() {
                         <C.PageSpace>
                             <M.MyPage>
                                 <HeaderMypage />
-<<<<<<< HEAD
                                 <M.container style={{ marginTop: "40px" }}>
                                     <M.title>나의 사상체질</M.title>
                                     <M.result>
@@ -93,9 +92,6 @@ function MyPage() {
                                 <M.other_func>-</M.other_func>
                                 <M.other_func>로그아웃</M.other_func>
                                 <M.other_func>탈퇴하기</M.other_func>
-=======
-                                {isLoggedIn ? <Member /> : <NonMember />}
->>>>>>> 97671da4e8f71914ad524ed845f6fb55f6fa24f0
                             </M.MyPage>
                         </C.PageSpace>
                     </M.Background>
