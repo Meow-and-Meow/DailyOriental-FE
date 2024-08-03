@@ -3,17 +3,20 @@ import * as C from "../styles/CommonStyle";
 import * as M from "../styles/MyPageStyle";
 
 import HeaderMypage from "../components/headerMypage";
-import text_1 from "../img/text_1.png";
-import text_2 from "../img/text_2.png";
-import text_3 from "../img/text_3.png";
-import text_4 from "../img/text_4.png";
+import Member from "../components/member";
+import NonMember from "../components/nonMember";
 
 function MyPage() {
-    const [message, setMessage] = useState("누르면 보여요");
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    const handleTextClick = () => {
-        setMessage("hello");
-    };
+    useEffect(() => {
+        const token = localStorage.getItem("userToken");
+        if (token) {
+            setIsLoggedIn(true);
+        } else {
+            setIsLoggedIn(false);
+        }
+    }, []);
     return (
         <>
             <C.Page>
@@ -22,6 +25,7 @@ function MyPage() {
                         <C.PageSpace>
                             <M.MyPage>
                                 <HeaderMypage />
+<<<<<<< HEAD
                                 <M.container style={{ marginTop: "40px" }}>
                                     <M.title>나의 사상체질</M.title>
                                     <M.result>
@@ -89,6 +93,9 @@ function MyPage() {
                                 <M.other_func>-</M.other_func>
                                 <M.other_func>로그아웃</M.other_func>
                                 <M.other_func>탈퇴하기</M.other_func>
+=======
+                                {isLoggedIn ? <Member /> : <NonMember />}
+>>>>>>> 97671da4e8f71914ad524ed845f6fb55f6fa24f0
                             </M.MyPage>
                         </C.PageSpace>
                     </M.Background>

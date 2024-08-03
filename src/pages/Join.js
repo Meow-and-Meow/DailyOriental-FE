@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import * as C from "../styles/CommonStyle";
 import * as J from "../styles/JoinStyle";
 import logo from "../img/title.png";
@@ -6,6 +8,42 @@ import kakao from "../img/icon_kakao.png";
 import naver from "../img/icon_naver.png";
 
 function Join() {
+    const navigate = useNavigate();
+
+    const handleSignup = () => {
+        navigate("/signup");
+    };
+
+    const handleNon = () => {
+        navigate("/main");
+    };
+
+    const [loginData, setLoginData] = useState({
+        id: "",
+        pwd: "",
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setLoginData({
+            ...loginData,
+            [name]: value,
+        });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.post("api주소/login", loginData);
+            console.log("Response:", response.data);
+            localStorage.setItem("userToken", response.data.token);
+            navigate("/main");
+        } catch (error) {
+            console.error("로그인 에러:", error);
+            window.alert("로그인에 실패했습니다. 다시 시도해주세요.");
+        }
+    };
+
     return (
         <>
             <C.Page>
@@ -20,14 +58,26 @@ function Join() {
                                             <img src={logo} style={{ width: "124px" }}></img>
                                         </J.logo_title>
                                     </J.title>
-                                    <J.login>
+                                    <J.login onSubmit={handleSubmit}>
                                         <J.login_content style={{ marginTop: "116px" }}>
                                             <J.label>ID</J.label>
-                                            <J.input placeholder="아이디" type="text" name="id"></J.input>
+                                            <J.input
+                                                placeholder="아이디"
+                                                type="text"
+                                                name="id"
+                                                value={loginData.id}
+                                                onChange={handleChange}
+                                            ></J.input>
                                         </J.login_content>
                                         <J.login_content>
                                             <J.label>PW</J.label>
-                                            <J.input placeholder="비밀번호" type="password" name="pwd"></J.input>
+                                            <J.input
+                                                placeholder="비밀번호"
+                                                type="password"
+                                                name="pwd"
+                                                value={loginData.pwd}
+                                                onChange={handleChange}
+                                            ></J.input>
                                         </J.login_content>
                                         <J.btn type="submit" style={{ color: "#F5F5F5" }}>
                                             로그인
@@ -56,9 +106,9 @@ function Join() {
                                         <J.content_line>|</J.content_line>
                                         <J.content>비밀번호 찾기</J.content>
                                         <J.content_line>|</J.content_line>
-                                        <J.content>회원가입</J.content>
+                                        <J.content onClick={handleSignup}>회원가입</J.content>
                                     </J.other_func>
-                                    <J.non_member>비회원으로 시작하기</J.non_member>
+                                    <J.non_member onClick={handleNon}>비회원으로 시작하기</J.non_member>
                                 </J.sub_background>
                             </J.Join>
                         </C.PageSpace>

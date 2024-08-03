@@ -15,6 +15,7 @@ export const ImgTitle = styled.div`
     position: relative; /* Ensure it can stack with z-index */
     top: -50px;
     z-index: 2; /* Higher than the Detail box */
+    margin-top: 15%;
 `;
 
 export const Detail = styled.div`

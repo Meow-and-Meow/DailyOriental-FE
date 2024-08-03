@@ -167,6 +167,7 @@ export const content = styled.div`
     font-size: 12px;
     line-height: 14.32px;
     color: #79212f;
+    cursor: pointer;
 `;
 
 export const content_line = styled.div`
@@ -191,4 +192,5 @@ export const non_member = styled.div`
     font-size: 12px;
     line-height: 14.32px;
     color: #28272a;
+    cursor: pointer;
 `;
