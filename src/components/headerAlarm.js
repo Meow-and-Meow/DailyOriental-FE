@@ -19,7 +19,7 @@ function HeaderAlarm() {
 
   useEffect(() => {
     // 서버 연동 등을 통해 DropdownItem이 있는지 확인하는 로직
-    setHasDropdownItems(true); // 임의로 true
+    setHasDropdownItems(false); // 임의로 true
   }, []);
 
   return (
