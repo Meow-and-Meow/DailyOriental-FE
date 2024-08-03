@@ -17,22 +17,22 @@ export const Title = styled.div`
   margin: 21px 20px;
 
   img {
-    width: 120px;
+    width: 180px;
   }
 `;
 
 export const TitleText = styled.div`
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 600;
-  line-height: 14.32px;
+  line-height: 19.09px;
   color: #28272a;
-  padding-left: 7px;
+  padding-left: 12px;
 `;
 
 export const Btns = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 74px;
+  margin-top: 54px;
 `;
 
 export const MainBtns = styled.div`
@@ -134,6 +134,7 @@ export const Boxs = styled.div`
   justify-content: center;
   align-items: center;
   gap: 12px;
+  margin-bottom: 12px;
 `;
 
 export const SubBox = styled.div`
