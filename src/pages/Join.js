@@ -34,9 +34,10 @@ function Join() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${process.env.REACT_APP_API}/login`, loginData);
+      const response = await axios.post(`${process.env.REACT_APP_API}/accounts/login/`, loginData);
       console.log("Response:", response.data);
-      localStorage.setItem("userToken", response.data.token);
+      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("user_id", response.data.user_id);
       navigate("/main");
     } catch (error) {
       console.log(loginData);
