@@ -11,11 +11,11 @@ export const TipBox = styled.div`
 
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 8px;
   cursor: pointer;
 
   img {
-    width: 50px;
+    width: 70px;
   }
 `;
 
