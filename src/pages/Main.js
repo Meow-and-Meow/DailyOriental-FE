@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as C from "../styles/CommonStyle";
 import * as M from "../styles/MainStyle";
 
 import HeaderAlarm from "../components/headerAlarm";
 import MainBox from "../components/mainBox";
+import ModalLink from "../components/modalLink";
 import titleImg from "../img/title.png";
 import testBtn from "../img/Arch_test_btn_650x650.png";
 import massageBtn from "../img/Arch_massage_btn_650x650.png";
@@ -18,6 +19,24 @@ function Main() {
 
   const handleNavLinkClick = (path) => {
     navigate(path);
+  };
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const openModal = () => {
+    // 클립보드에 링크 복사
+    navigator.clipboard.writeText("https://dailyoriental.netlify.app/");
+
+    setIsModalOpen(true);
+    setIsModalVisible(true);
+  };
+
+  const closeModal = () => {
+    setIsModalVisible(false);
+    setTimeout(() => {
+      setIsModalOpen(false);
+    }, 400); // 400ms 후에 모달 상태를 false로 설정
   };
 
   const category = "test";
@@ -65,11 +84,12 @@ function Main() {
                     <M.SubTitle>오늘의 미션 확인하기</M.SubTitle>
                     <M.SubText>건강한 삶을 위한 건강한 한방</M.SubText>
                   </M.SubBox>
-                  <M.SubBox>
+                  <M.SubBox onClick={openModal}>
                     <M.SubTitle>친구와 함께 매일 한방</M.SubTitle>
                     <M.SubText>매일 한방 공유하기</M.SubText>
                   </M.SubBox>
                 </M.Boxs>
+                {isModalOpen && <ModalLink onClose={closeModal} isModalVisible={isModalVisible} />}
               </M.Main>
             </C.PageSpace>
           </M.Background>
