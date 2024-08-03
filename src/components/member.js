@@ -42,6 +42,7 @@ function Member() {
     const confirmLogout = window.confirm("접속한 기기에서 로그아웃하시겠습니까?");
     if (confirmLogout) {
       localStorage.removeItem("token");
+      localStorage.removeItem("user_id");
       navigate("/join");
       alert("로그아웃 되었습니다.");
     }
@@ -52,6 +53,7 @@ function Member() {
     if (confirmWithdraw) {
       //탈퇴 api
       localStorage.removeItem("token");
+      localStorage.removeItem("user_id");
       alert("탈퇴가 완료되었습니다.");
       navigate("/");
     }
