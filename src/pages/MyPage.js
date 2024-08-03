@@ -25,7 +25,7 @@ function MyPage() {
                         <C.PageSpace>
                             <M.MyPage>
                                 <HeaderMypage />
-                                <Member />
+                                {isLoggedIn ? <Member /> : <NonMember />}
                             </M.MyPage>
                         </C.PageSpace>
                     </M.Background>
