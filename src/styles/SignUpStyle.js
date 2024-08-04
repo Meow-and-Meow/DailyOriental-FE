@@ -16,7 +16,7 @@ export const sub_background = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 100%;
+    width: 360px;
     height: 100vh;
     background-color: #f5f5f5;
     border-radius: 15rem 0 0 0;
