@@ -53,7 +53,7 @@ function Member() {
     const resultImgSrc = surveyImages[userInfo.survey_result] || "";
 
     const handleTest = () => {
-        navigate("/test");
+        navigate("/testStart");
     };
 
     const [isModalOpen, setIsModalOpen] = useState(false);
