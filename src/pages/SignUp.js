@@ -39,12 +39,10 @@ function SignUp() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            console.log("signup data:", formData);
-            console.log("API URL:", process.env.REACT_APP_API);
-            const response = await axios.post(`${process.env.REACT_APP_API}accounts/register/`, formData);
+            const response = await axios.post(`${process.env.REACT_APP_API}/accounts/register/`, formData);
             console.log("Response:", response.data);
             const userData = {
-                id: response.data.user_id,
+                id: response.data.user.id,
                 token: response.data.token,
             };
             localStorage.setItem("userData", JSON.stringify(userData));

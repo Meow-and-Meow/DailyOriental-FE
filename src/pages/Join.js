@@ -34,14 +34,14 @@ function Join() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post(`${process.env.REACT_APP_API}accounts/login/`, loginData);
+            const response = await axios.post(`${process.env.REACT_APP_API}/accounts/login/`, loginData);
             console.log("Response:", response.data);
             const storedUserData = JSON.parse(localStorage.getItem("userData"));
             if (!storedUserData) {
                 localStorage.setItem(
                     "userData",
                     JSON.stringify({
-                        id: response.data.user_id,
+                        id: response.data.user.id,
                         token: response.data.token,
                     })
                 );

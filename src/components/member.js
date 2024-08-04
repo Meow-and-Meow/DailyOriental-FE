@@ -17,7 +17,7 @@ function Member() {
     useEffect(() => {
         const userData = localStorage.getItem("userData");
         console.log("User Data:", userData);
-        const apiUrl = `${process.env.REACT_APP_API}accounts/user/${id}/`;
+        const apiUrl = `${process.env.REACT_APP_API}/accounts/user/${id}/`;
         console.log("API URL:", apiUrl);
         console.log("Retrieved ID:", id);
         if (userData && id) {
