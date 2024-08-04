@@ -23,7 +23,7 @@ function Member() {
                 try {
                     const response = await axios.get(`${process.env.REACT_APP_API}/accounts/user/${id}/`, {
                         headers: {
-                            Authorization: `${token}`,
+                            Authorization: `Token ${token}`,
                         },
                     });
                     setUserInfo(response.data);
@@ -37,10 +37,23 @@ function Member() {
         }
     }, []);
 
-    const [message, setMessage] = useState("***********");
+    /* const [message, setMessage] = useState("***********");
 
     const handleTextClick = () => {
         setMessage(userInfo.password);
+    }; */
+
+    const surveyImages = {
+        1: text_1,
+        2: text_2,
+        3: text_3,
+        4: text_4,
+    };
+
+    const resultImgSrc = surveyImages[userInfo.survey_result] || "";
+
+    const handleTest = () => {
+        navigate("/test");
     };
 
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -73,11 +86,24 @@ function Member() {
     const handleWithdraw = () => {
         const confirmWithdraw = window.confirm("정말 탈퇴하시겠습니까?");
         if (confirmWithdraw) {
-            //탈퇴 api
-            localStorage.removeItem("token");
-            localStorage.removeItem("user_id");
-            alert("탈퇴가 완료되었습니다.");
-            navigate("/");
+            const token = localStorage.getItem("token");
+            const id = localStorage.getItem("user_id");
+            const deleteUserData = async () => {
+                try {
+                    const response = await axios.delete(`${process.env.REACT_APP_API}/accounts/user/${id}/`, {
+                        headers: {
+                            Authorization: `Token ${token}`,
+                        },
+                    });
+                    deleteUserData();
+                    localStorage.removeItem("token");
+                    localStorage.removeItem("user_id");
+                    alert("탈퇴가 완료되었습니다.");
+                    navigate("/");
+                } catch (error) {
+                    console.error("탈퇴 실패했습니다:", error);
+                }
+            };
         }
     };
 
@@ -85,21 +111,29 @@ function Member() {
         <>
             <M.container style={{ marginTop: "40px" }}>
                 <M.title>나의 사상체질</M.title>
-                <M.result>
+                <M.result onClick={handleTest}>
                     <M.result_img>
-                        <img src={text_1}></img>
+                        <img src={resultImgSrc}></img>
                     </M.result_img>
-                    <M.result_text>태양인</M.result_text>
+                    <M.result_text>
+                        {userInfo.survey_result === 1
+                            ? "태양인"
+                            : userInfo.survey_result === 2
+                            ? "소양인"
+                            : userInfo.survey_result === 3
+                            ? "태음인"
+                            : userInfo.survey_result === 4
+                            ? "소음인"
+                            : "자가진단 하러가기"}
+                    </M.result_text>
                 </M.result>
             </M.container>
             <M.container style={{ height: "245px" }}>
                 <M.title>설정</M.title>
                 <M.sub_container>
                     <M.content style={{ marginTop: "20px" }}>
-                        <M.sub_title>PW</M.sub_title>
-                        <M.text style={{ cursor: "pointer" }} onClick={handleTextClick}>
-                            {message}
-                        </M.text>
+                        <M.sub_title>ID</M.sub_title>
+                        <M.text>{userInfo.id}</M.text>
                     </M.content>
                     <M.content>
                         <M.sub_title>이름</M.sub_title>

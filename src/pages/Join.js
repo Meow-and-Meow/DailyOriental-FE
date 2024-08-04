@@ -103,10 +103,6 @@ function Join() {
                                         </J.btn>
                                     </J.easy_login>
                                     <J.other_func>
-                                        <J.content>아이디 찾기</J.content>
-                                        <J.content_line>|</J.content_line>
-                                        <J.content>비밀번호 찾기</J.content>
-                                        <J.content_line>|</J.content_line>
                                         <J.content onClick={handleSignup}>회원가입</J.content>
                                     </J.other_func>
                                     <J.non_member onClick={handleNon}>비회원으로 시작하기</J.non_member>
