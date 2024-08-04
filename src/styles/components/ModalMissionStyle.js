@@ -1,35 +1,12 @@
-import styled, { keyframes } from "styled-components";
-
-const slideUp = keyframes`
-  from {
-    transform: translateY(100vh);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-`;
-
-const slideDown = keyframes`
-  from {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateY(100vh);
-    opacity: 0;
-  }
-`;
+import styled from "styled-components";
 
 export const ModalWrap = styled.div`
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
-  width: 250px;
-  height: 120px;
+  width: 350px;
+  height: 227px;
   z-index: 2;
   background-color: #28272a;
-  animation: ${(props) => (props.$isModalVisible ? slideUp : slideDown)} 0.4s ease-in-out;
 `;
 
 export const ModalSpace = styled.div`
@@ -63,18 +40,51 @@ export const ModalContent = styled.div`
   align-items: center;
 `;
 
-export const ModalText = styled.div`
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 14.32px;
-  text-align: center;
+export const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 75px;
   margin-top: 25px;
+
+  img {
+    width: 15px;
+    cursor: pointer;
+  }
+`;
+
+export const Empty = styled.div`
+  width: 15px;
+`;
+
+export const ModalText = styled.div`
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 16.71px;
+  text-align: center;
   color: #f5f5f5;
-  white-space: pre-line;
+`;
+
+export const Field = styled.textarea`
+  width: calc(292px - 24px);
+  height: calc(100px - 30px);
+  border-radius: 20px;
+  border: 2px solid #f5f5f5;
+  background-color: #28272a;
+  outline: none;
+  resize: none;
+  margin-top: 20px;
+  padding: 15px 12px;
+
+  font-family: "Pretendard";
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 16.71px;
+  color: #f5f5f5;
 `;
 
 export const CloseBtn = styled.div`
-  margin-top: 20px;
+  margin-top: 10px;
   width: 93px;
   height: 36px;
   border-radius: 15px;
