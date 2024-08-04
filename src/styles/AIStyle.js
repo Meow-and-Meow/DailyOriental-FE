@@ -66,7 +66,7 @@ export const btn = styled.button`
     color: ${(props) => (props.selected ? "#f5f5f5" : "#3a2929")};
 `;
 
-export const search = styled.div`
+export const search = styled.form`
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -117,6 +117,7 @@ export const input = styled.input`
 export const tip = styled.div`
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: start;
     text-align: center;
     box-sizing: border-box;
@@ -125,7 +126,7 @@ export const tip = styled.div`
     padding: 17px 0;
     position: absolute;
     top: 289px;
-    left: 50px;
+    margin-left: -100px;
 `;
 
 export const tip_text = styled.div`
@@ -137,6 +138,7 @@ export const tip_text = styled.div`
 
 export const answer = styled.div`
     display: flex;
+    align-items: center;
     flex-direction: column;
     box-sizing: border-box;
     width: 360px;
@@ -149,8 +151,16 @@ export const doctor = styled.div`
     width: 53px;
     height: 62px;
     position: absolute;
-    top: 353px;
-    left: 283px;
+    margin-left: 250px;
+`;
+
+export const polygon = styled.div`
+    display: flex;
+    width: 57.05px;
+    height: 27.39px;
+    position: absolute;
+    margin-left: 100px;
+    top: 388px;
 `;
 
 export const answer_container = styled.div`
@@ -166,7 +176,7 @@ export const answer_container = styled.div`
 `;
 
 export const answer_text = styled.div`
-    color: #28272a;
+    color: rgba(0, 0, 0, 0.25);
     font-weight: 600;
     font-size: 15px;
     line-height: 17.9px;
