@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import * as C from "../styles/CommonStyle";
 import * as A from "../styles/AIStyle";
+import { CallGPT } from "../utils/gpt";
 
 import Header from "../components/header";
 import search from "../img/icon_search.png";
@@ -12,6 +13,7 @@ function AI() {
     const subTitle = "AI 허준과 함께하는 매일 한방";
     const [selectedType, setSelectedType] = useState("");
     const [inputValue, setInputValue] = useState("");
+    const [answer, setAnswer] = useState("");
 
     const handleTypeClick = (type) => {
         setSelectedType((prev) => (prev === type ? "" : type));
@@ -29,6 +31,15 @@ function AI() {
 
     const handleSubmit = () => {
         console.log("input:", inputValue);
+        CallGPT(inputValue)
+            .then((response) => {
+                console.log("Response from GPT:", response);
+                setAnswer(response.choices[0].message.content);
+            })
+            .catch((error) => {
+                console.error("Error calling GPT:", error);
+                setAnswer("문제가 발생했습니다. 다시 시도해 주세요.");
+            });
     };
 
     return (
@@ -106,7 +117,11 @@ function AI() {
                                         <img src={doctor}></img>
                                     </A.doctor>
                                     <A.answer_container>
-                                        <A.answer_text>검색창을 통해 AI 허준에게 질문해보세요</A.answer_text>
+                                        {answer ? (
+                                            <A.answer_text style={{ color: "#28272A" }}>{answer}</A.answer_text>
+                                        ) : (
+                                            <A.answer_text>검색창을 통해 AI 허준에게 질문해보세요</A.answer_text>
+                                        )}
                                     </A.answer_container>
                                 </A.answer>
                             </A.AI>
