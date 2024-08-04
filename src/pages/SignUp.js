@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import * as C from "../styles/CommonStyle";
 import * as S from "../styles/SignUpStyle";
 
@@ -9,11 +11,11 @@ function SignUp() {
     const [selectedGender, setSelectedGender] = useState("");
     const [formData, setFormData] = useState({
         id: "",
-        pwd: "",
+        password: "",
         name: "",
         gender: "",
         age: "",
-        tel: "",
+        phone: "",
         reason: "",
     });
 
@@ -33,9 +35,23 @@ function SignUp() {
         });
     };
 
-    const handleSubmit = (e) => {
+    const navigate = useNavigate();
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // 폼 제출 처리
+        try {
+            const response = await axios.post(`${process.env.REACT_APP_API}/accounts/register/`, formData);
+            console.log("Response:", response.data);
+            const userData = {
+                id: response.data.user.id,
+                token: response.data.token,
+            };
+            localStorage.setItem("userData", JSON.stringify(userData));
+            console.log("Userdata:", userData);
+            navigate("/join");
+        } catch (error) {
+            console.error("회원가입 에러:", error.response.data);
+            window.alert("회원가입에 실패했습니다. 다시 시도해주세요.");
+        }
     };
 
     return (
@@ -45,8 +61,8 @@ function SignUp() {
                     <S.Background>
                         <C.PageSpace>
                             <S.SignUp>
+                                <HeaderRegister />
                                 <S.sub_background>
-                                    <HeaderRegister />
                                     <S.title>
                                         <S.logo_title>
                                             <img src={logo} style={{ width: "124px" }}></img>
@@ -56,37 +72,55 @@ function SignUp() {
                                     <S.signup onSubmit={handleSubmit}>
                                         <S.content style={{ marginTop: "73px" }}>
                                             <S.label>ID</S.label>
-                                            <S.input type="text" name="id" placeholder="아이디"></S.input>
+                                            <S.input
+                                                type="text"
+                                                name="id"
+                                                placeholder="아이디"
+                                                value={formData.id}
+                                                onChange={handleChange}
+                                            ></S.input>
                                         </S.content>
                                         <S.content>
                                             <S.label>PW</S.label>
-                                            <S.input type="password" name="pwd" placeholder="비밀번호"></S.input>
+                                            <S.input
+                                                type="password"
+                                                name="password"
+                                                placeholder="비밀번호"
+                                                value={formData.password}
+                                                onChange={handleChange}
+                                            ></S.input>
                                         </S.content>
                                         <S.content>
                                             <S.label>이름</S.label>
-                                            <S.input type="text" name="name" placeholder="이름"></S.input>
+                                            <S.input
+                                                type="text"
+                                                name="name"
+                                                placeholder="이름"
+                                                value={formData.name}
+                                                onChange={handleChange}
+                                            ></S.input>
                                         </S.content>
                                         <S.content>
                                             <S.label>성별</S.label>
                                             <S.gender name="gender">
                                                 <S.gender_btn
-                                                    value="male"
-                                                    onClick={() => handleGenderClick("male")}
+                                                    type="button"
+                                                    value="M"
+                                                    onClick={() => handleGenderClick("M")}
                                                     style={{
-                                                        backgroundColor:
-                                                            selectedGender === "male" ? "#79212f" : "#f5f5f5",
-                                                        color: selectedGender === "male" ? "#f5f5f5" : "#28272a",
+                                                        backgroundColor: selectedGender === "M" ? "#79212f" : "#f5f5f5",
+                                                        color: selectedGender === "M" ? "#f5f5f5" : "#28272a",
                                                     }}
                                                 >
                                                     남
                                                 </S.gender_btn>
                                                 <S.gender_btn
-                                                    value="female"
-                                                    onClick={() => handleGenderClick("female")}
+                                                    type="button"
+                                                    value="F"
+                                                    onClick={() => handleGenderClick("F")}
                                                     style={{
-                                                        backgroundColor:
-                                                            selectedGender === "female" ? "#79212f" : "#f5f5f5",
-                                                        color: selectedGender === "female" ? "#f5f5f5" : "#28272a",
+                                                        backgroundColor: selectedGender === "F" ? "#79212f" : "#f5f5f5",
+                                                        color: selectedGender === "F" ? "#f5f5f5" : "#28272a",
                                                     }}
                                                 >
                                                     여
@@ -95,7 +129,7 @@ function SignUp() {
                                         </S.content>
                                         <S.content>
                                             <S.label>연령</S.label>
-                                            <S.select value="" name="age">
+                                            <S.select name="age" value={formData.age} onChange={handleChange}>
                                                 <S.option value="10" name="10">
                                                     10대
                                                 </S.option>
@@ -121,11 +155,17 @@ function SignUp() {
                                         </S.content>
                                         <S.content>
                                             <S.label>휴대전화</S.label>
-                                            <S.input type="tel" name="tel" placeholder="010-0000-0000"></S.input>
+                                            <S.input
+                                                type="phone"
+                                                name="phone"
+                                                placeholder="010-0000-0000"
+                                                value={formData.phone}
+                                                onChange={handleChange}
+                                            ></S.input>
                                         </S.content>
                                         <S.content>
                                             <S.label>가입사유</S.label>
-                                            <S.select value="" name="reason">
+                                            <S.select name="reason" value={formData.reason} onChange={handleChange}>
                                                 <S.option value="interest" name="interest">
                                                     한방에 대한 관심
                                                 </S.option>

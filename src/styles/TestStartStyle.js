@@ -1,55 +1,60 @@
 import styled from "styled-components";
 
 export const Background = styled.div`
-    background: linear-gradient(to bottom, #cee5db 50%, #f7db8d 50%);
+    background-color: #28272a;
 `;
 
 export const Test = styled.div``;
 
-export const Nav = styled.div``;
-
-export const ImgTitle = styled.div`
+export const Nav = styled.div`
+    margin: 20px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    position: relative; /* Ensure it can stack with z-index */
-    top: -50px;
-    z-index: 2; /* Higher than the Detail box */
-    margin-top: 15%;
-`;
-
-export const Detail = styled.div`
-    background: #f7db8d;
-    border-radius: 30px 30px 0 0;
-    position: relative; /* Allows for positioning relative to its normal position */
-    top: -100px; /* Moves the element upwards, overlapping the above element */
-    z-index: 1; /* Ensures the Detail box is above other content */
-
-    .DetailIntro {
-        text-align: center;
+    justify-content: space-between;
+    .Title {
+        display: flex;
+        flex-direction: column;
         align-items: center;
     }
-    .Detailelements {
-        padding: 30px;
-        padding-top: 100px;
+    .TopTitle {
+        color: #ffffff;
+        font-size: 15px;
     }
-    .Detailtitle {
-        color: #79212f;
-        font-size: 20px;
-        font-weight: 700;
-        margin: 10px;
-    }
-    .Deatilinfomation1 {
-        margin: 10px;
-    }
-    .Deatilinfomation2 {
-        margin: 10px;
-    }
-    .Deatilinfomation3 {
-        margin: 10px;
+    .TitleInfo {
+        color: #f7db8d;
+        font-size: 9px;
     }
 `;
 
+export const Adver = styled.div`
+    .AdvText {
+        display: flex;
+        justify-content: center;
+        color: #f7db8d;
+        text-align: center;
+        margin-top: 10%;
+        fo2746nt-size: 12px;
+    }
+`;
+export const InfoDetail = styled.div`
+    margin: 20px;
+    margin-top: 10%;
+    .InfoTitle {
+        display: flex;
+        color: white;
+        font-size: 15px;
+        margin: 13px;
+    }
+    .InfoBox {
+        background-color: white;
+        border: none;
+        border-radius: 20px;
+        padding: 10px 20px;
+        margin: 10px;
+        font-size: 12px;
+    }
+`;
 export const ButtonContainer = styled.div`
     display: flex;
     flex-direction: column;
