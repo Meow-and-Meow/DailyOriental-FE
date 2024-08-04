@@ -41,12 +41,6 @@ function SignUp() {
         try {
             const response = await axios.post(`${process.env.REACT_APP_API}/accounts/register/`, formData);
             console.log("Response:", response.data);
-            const userData = {
-                id: response.data.user.id,
-                token: response.data.token,
-            };
-            localStorage.setItem("userData", JSON.stringify(userData));
-            console.log("Userdata:", userData);
             navigate("/join");
         } catch (error) {
             console.error("회원가입 에러:", error.response.data);

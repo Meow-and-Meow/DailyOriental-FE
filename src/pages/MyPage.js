@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 import * as C from "../styles/CommonStyle";
 import * as M from "../styles/MyPageStyle";
 
@@ -8,18 +9,19 @@ import Member from "../components/member";
 import NonMember from "../components/nonMember";
 
 function MyPage() {
-    const { id } = useParams(); // URL에서 id 가져오기
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
-        const userData = JSON.parse(localStorage.getItem("userData"));
-        if (userData && userData.token) {
+        const token = localStorage.getItem("token");
+        const id = localStorage.getItem("user_id");
+        if (token) {
             setIsLoggedIn(true);
-            console.log(userData);
         } else {
             setIsLoggedIn(false);
         }
     }, []);
+
+    const navigate = useNavigate();
 
     return (
         <>
@@ -29,7 +31,7 @@ function MyPage() {
                         <C.PageSpace>
                             <M.MyPage>
                                 <HeaderMypage />
-                                {isLoggedIn ? <Member id={id} /> : <NonMember />}
+                                {isLoggedIn ? <Member /> : <NonMember />}
                             </M.MyPage>
                         </C.PageSpace>
                     </M.Background>

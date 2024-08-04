@@ -36,20 +36,10 @@ function Join() {
         try {
             const response = await axios.post(`${process.env.REACT_APP_API}/accounts/login/`, loginData);
             console.log("Response:", response.data);
-            const storedUserData = JSON.parse(localStorage.getItem("userData"));
-            if (!storedUserData) {
-                localStorage.setItem(
-                    "userData",
-                    JSON.stringify({
-                        id: response.data.user.id,
-                        token: response.data.token,
-                    })
-                );
-            }
-            console.log("로그인 성공:", storedUserData);
+            localStorage.setItem("token", response.data.token);
+            localStorage.setItem("user_id", response.data.user_id);
             navigate("/main");
         } catch (error) {
-            console.log(loginData);
             console.error("로그인 에러:", error);
             window.alert("로그인에 실패했습니다. 다시 시도해주세요.");
         }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import * as M from "../styles/components/MemberStyle";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import axios from "axios";
+import * as M from "../styles/components/MemberStyle";
 
 import ModalLink from "../components/modalLink";
 import text_1 from "../img/text_1.png";
@@ -11,46 +11,42 @@ import text_4 from "../img/text_4.png";
 
 function Member() {
     const navigate = useNavigate();
-    const [userInfo, setUserInfo] = useState(null);
-    const { id } = useParams();
+    const [userInfo, setUserInfo] = useState("");
 
     useEffect(() => {
-        const userData = localStorage.getItem("userData");
-        console.log("User Data:", userData);
-        const apiUrl = `${process.env.REACT_APP_API}/accounts/user/${id}/`;
-        console.log("API URL:", apiUrl);
-        console.log("Retrieved ID:", id);
-        if (userData && id) {
+        const token = localStorage.getItem("token");
+        const id = localStorage.getItem("user_id");
+        console.log(token);
+        console.log(id);
+        if (token) {
             const fetchUserData = async () => {
                 try {
-                    const token = JSON.parse(userData).token;
-                    const response = await axios.get(`${process.env.REACT_APP_API}accounts/user/${id}/`, {
+                    const response = await axios.get(`${process.env.REACT_APP_API}/accounts/user/${id}/`, {
                         headers: {
-                            Authorization: `Bearer ${token}`,
+                            Authorization: `${token}`,
                         },
                     });
-
                     setUserInfo(response.data);
-                    console.log(response.data);
+                    console.log("확인:", response.data);
                 } catch (error) {
                     console.error("사용자 정보를 불러오는데 실패했습니다:", error);
                 }
             };
+
             fetchUserData();
         }
-    }, [id]);
+    }, []);
 
     const [message, setMessage] = useState("***********");
 
     const handleTextClick = () => {
-        setMessage("hello");
+        setMessage(userInfo.password);
     };
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isModalVisible, setIsModalVisible] = useState(false);
 
     const openModal = () => {
-        // 클립보드에 링크 복사
         navigator.clipboard.writeText("https://dailyoriental.netlify.app/");
 
         setIsModalOpen(true);
@@ -67,7 +63,8 @@ function Member() {
     const handleLogout = () => {
         const confirmLogout = window.confirm("접속한 기기에서 로그아웃하시겠습니까?");
         if (confirmLogout) {
-            localStorage.removeItem("userData");
+            localStorage.removeItem("token");
+            localStorage.removeItem("user_id");
             navigate("/join");
             alert("로그아웃 되었습니다.");
         }
@@ -77,7 +74,8 @@ function Member() {
         const confirmWithdraw = window.confirm("정말 탈퇴하시겠습니까?");
         if (confirmWithdraw) {
             //탈퇴 api
-            localStorage.removeItem("userData");
+            localStorage.removeItem("token");
+            localStorage.removeItem("user_id");
             alert("탈퇴가 완료되었습니다.");
             navigate("/");
         }
@@ -105,19 +103,33 @@ function Member() {
                     </M.content>
                     <M.content>
                         <M.sub_title>이름</M.sub_title>
-                        <M.text>김덕성</M.text>
+                        <M.text>{userInfo.name}</M.text>
                     </M.content>
                     <M.content>
                         <M.sub_title>성별</M.sub_title>
-                        <M.text>여성</M.text>
+                        <M.text>{userInfo.gender === "M" ? "남성" : userInfo.gender === "F" ? "여성" : ""}</M.text>
                     </M.content>
                     <M.content>
                         <M.sub_title>연령</M.sub_title>
-                        <M.text>20대</M.text>
+                        <M.text>
+                            {userInfo.age < 20
+                                ? "10대"
+                                : userInfo.age < 30
+                                ? "20대"
+                                : userInfo.age < 40
+                                ? "30대"
+                                : userInfo.age < 50
+                                ? "40대"
+                                : userInfo.age < 60
+                                ? "50대"
+                                : userInfo.age < 70
+                                ? "60대"
+                                : "70대이상"}
+                        </M.text>
                     </M.content>
                     <M.content style={{ marginBottom: "14px" }}>
                         <M.sub_title>휴대전화</M.sub_title>
-                        <M.text>010-1234-0382</M.text>
+                        <M.text>{userInfo.phone}</M.text>
                     </M.content>
                 </M.sub_container>
             </M.container>
