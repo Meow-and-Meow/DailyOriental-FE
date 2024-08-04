@@ -12,7 +12,7 @@ function NonMember() {
     };
 
     const handleTest = () => {
-        navigate("/test");
+        navigate("/testStart");
     };
 
     const [isModalOpen, setIsModalOpen] = useState(false);
