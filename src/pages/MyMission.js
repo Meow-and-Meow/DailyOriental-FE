@@ -1,11 +1,10 @@
 import React from "react";
 import * as C from "../styles/CommonStyle";
-import * as M from "../styles/MissionStyle";
+import * as M from "../styles/MyMissionStyle";
 
 import Header from "../components/header";
-import MissionSpace from "../components/mission/missionSpace";
 
-function Mission() {
+function MyMission() {
   const mainTitle = "매일한방 매일습관";
   const subTitle = "나의 체질에 맞는 건강 습관 만들기";
 
@@ -15,11 +14,9 @@ function Mission() {
         <C.Center>
           <M.Background>
             <C.PageSpace>
-              <M.Mission>
+              <M.MyMission>
                 <Header mainTitle={mainTitle} subTitle={subTitle} />
-                <M.Title>오늘의 미션</M.Title>
-                <MissionSpace />
-              </M.Mission>
+              </M.MyMission>
             </C.PageSpace>
           </M.Background>
         </C.Center>
@@ -28,4 +25,4 @@ function Mission() {
   );
 }
 
-export default Mission;
+export default MyMission;

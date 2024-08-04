@@ -22,7 +22,7 @@ function Splash() {
             <C.PageSpace>
               <S.Splash>
                 <S.logo>
-                  <img src={logo_r}></img>
+                  <img src={logo_r} alt="매일한방"></img>
                 </S.logo>
               </S.Splash>
             </C.PageSpace>
