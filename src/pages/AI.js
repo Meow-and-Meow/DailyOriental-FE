@@ -15,12 +15,25 @@ function AI() {
     const [inputValue, setInputValue] = useState("");
     const [answer, setAnswer] = useState("");
 
-    const handleTypeClick = (type) => {
-        setSelectedType((prev) => (prev === type ? "" : type));
+    const handleTypeClick = (type, text) => {
+        if (selectedType === type) {
+            setSelectedType("");
+            setInputValue(inputValue.replace(text, "").trim());
+        } else {
+            setSelectedType(type);
+            const newValue = inputValue.replace(getTypeText(selectedType), "").trim();
+            setInputValue(`${text} ${newValue}`.trim());
+        }
     };
 
     const handleChange = (e) => {
-        setInputValue(e.target.value);
+        const newValue = e.target.value;
+        const typeText = getTypeText(selectedType);
+        if (newValue.startsWith(typeText)) {
+            setInputValue(newValue);
+        } else {
+            setInputValue(`${typeText} ${newValue}`.trim());
+        }
     };
 
     const handleKeyPress = (e) => {
@@ -29,7 +42,20 @@ function AI() {
         }
     };
 
-    const inputBtn = (e) => {};
+    const getTypeText = (type) => {
+        switch (type) {
+            case "text1":
+                return "태양인";
+            case "text2":
+                return "소양인";
+            case "text3":
+                return "태음인";
+            case "text4":
+                return "소음인";
+            default:
+                return "";
+        }
+    };
 
     const handleSubmit = () => {
         CallGPT(inputValue)
@@ -57,28 +83,28 @@ function AI() {
                                         <A.btn
                                             value="text1"
                                             selected={selectedType === "text1"}
-                                            onClick={() => handleTypeClick("text1")}
+                                            onClick={() => handleTypeClick("text1", "태양인")}
                                         >
                                             태양인
                                         </A.btn>
                                         <A.btn
                                             value="text2"
                                             selected={selectedType === "text2"}
-                                            onClick={() => handleTypeClick("text2")}
+                                            onClick={() => handleTypeClick("text2", "소양인")}
                                         >
                                             소양인
                                         </A.btn>
                                         <A.btn
                                             value="text3"
                                             selected={selectedType === "text3"}
-                                            onClick={() => handleTypeClick("text3")}
+                                            onClick={() => handleTypeClick("text3", "태음인")}
                                         >
                                             태음인
                                         </A.btn>
                                         <A.btn
                                             value="text4"
                                             selected={selectedType === "text4"}
-                                            onClick={() => handleTypeClick("text4")}
+                                            onClick={() => handleTypeClick("text4", "소음인")}
                                         >
                                             소음인
                                         </A.btn>
