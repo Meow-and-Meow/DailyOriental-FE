@@ -29,8 +29,9 @@ function AI() {
         }
     };
 
+    const inputBtn = (e) => {};
+
     const handleSubmit = () => {
-        console.log("input:", inputValue);
         CallGPT(inputValue)
             .then((response) => {
                 console.log("Response from GPT:", response);

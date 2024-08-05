@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import * as H from "../styles/components/HeaderStyle";
 
 import back from "../img/back_w.png";
@@ -12,6 +13,29 @@ function HeaderMypage() {
         navigate(-1);
     };
 
+    const [userInfo, setUserInfo] = useState("");
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        const id = localStorage.getItem("user_id");
+        if (token) {
+            const fetchUserData = async () => {
+                try {
+                    const response = await axios.get(`${process.env.REACT_APP_API}/accounts/user/${id}/`, {
+                        headers: {
+                            Authorization: `Token ${token}`,
+                        },
+                    });
+                    setUserInfo(response.data);
+                } catch (error) {
+                    console.error("사용자 정보를 불러오는데 실패했습니다:", error);
+                }
+            };
+
+            fetchUserData();
+        }
+    }, []);
+
     return (
         <>
             <H.Header>
@@ -21,8 +45,8 @@ function HeaderMypage() {
                 <H.TitleImg>
                     <img src={profile} alt="프로필" />
                     <H.Title>
-                        <H.MainTitle>김덕성</H.MainTitle>
-                        <H.SubName>회원</H.SubName>
+                        <H.MainTitle>{userInfo.name ? userInfo.name : "비회원"}</H.MainTitle>
+                        <H.SubName>{userInfo.is_member ? "회원" : "비회원"}</H.SubName>
                     </H.Title>
                 </H.TitleImg>
 
