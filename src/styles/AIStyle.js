@@ -151,7 +151,7 @@ export const doctor = styled.div`
     width: 53px;
     height: 62px;
     position: absolute;
-    margin-left: 200px;
+    margin-left: 15rem;
 `;
 
 export const polygon = styled.div`
@@ -159,7 +159,7 @@ export const polygon = styled.div`
     width: 57.05px;
     height: 27.39px;
     position: absolute;
-    margin-left: 100px;
+    margin-left: 5rem;
     top: 388px;
 `;
 
