@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // useNavigate 가져오기
+import { useNavigate, useLocation } from "react-router-dom";
 import * as C from "../styles/CommonStyle";
 import * as T from "../styles/TestStyle";
-import html2canvas from "html2canvas"; // html2canvas 가져오기
-import navbar from "../img/back_r.png";
+import axios from "axios";
+
 import human1 from "../img/human_1.png";
 import human2 from "../img/human_2.png";
 import human3 from "../img/human_3.png";
@@ -13,17 +13,18 @@ import title3 from "../img/title_3.png";
 
 import Header from "../components/header";
 
-function Test({ type }) {
+function Test() {
     const mainTitle = "사상체질 자가진단";
     const subTitle = "태양인/소양인/태음인/소음인";
-    // navigate 훅 선언
+
+    const location = useLocation();
+    const { type } = location.state || { type: 3 };
     const navigate = useNavigate();
 
-    //모달창
-    const [isModalOpen, setIsModalOpen] = useState(false); // 모달 상태 관리
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isAlertOpen, setIsAlertOpen] = useState(false);
+    const [alertMessage, setAlertMessage] = useState("");
 
-    // type에 따라 이미지와 텍스트 설정
-    type = 3;
     const getContent = (type) => {
         switch (type) {
             case 1:
@@ -62,13 +63,14 @@ function Test({ type }) {
                             <br />
                         </>
                     ),
+                    downloadImage: "../img/소음인.png",
                 };
             case 2:
                 return {
                     imageSrc: human2,
                     titleSrc: title2,
                     introText:
-                        "태양인은 전체 사상체질 중 가장 수가 적어 구별하기 어렵다는 특징이 있어요",
+                        "소양인은 성격이 급하고 쉽게 화를 낼 수 있다는 특징이 있어요",
                     info1: (
                         <>
                             용모가 뚜렷하고 살이 비후하지 않다 <br />
@@ -97,13 +99,14 @@ function Test({ type }) {
                             병일 수 있습니다 <br />
                         </>
                     ),
+                    downloadImage: "../img/소음인.png",
                 };
             case 3:
                 return {
                     imageSrc: human3,
                     titleSrc: title3,
                     introText:
-                        "태양인은 전체 사상체질 중 가장 수가 적어 구별하기 어렵다는 특징이 있어요",
+                        "태음인은 체구가 크고 성격이 차분하다는 특징이 있어요",
                     info1: (
                         <>
                             용모가 뚜렷하고 살이 비후하지 않다
@@ -120,23 +123,30 @@ function Test({ type }) {
                     ),
                     info2: (
                         <>
-                            사회적 관계가 원만하고 적극적으로 남들과 소통합니다{" "}
+                            사회적 관계가 원만하고 적극적으로 남들과 소통합니다
                             <br />
-                            소통이 원활하지 않으면 화를 잘 냅니다 <br />
-                            조급한 경우가 많아 일을 그르치기도 합니다 <br />
-                            앞으로 나아가려고 하며 용맹스럽고 적극적입니다{" "}
+                            소통이 원활하지 않으면 화를 잘 냅니다
                             <br />
-                            계획성이 적고 치밀하지 못한 편입니다 <br />
+                            조급한 경우가 많아 일을 그르치기도 합니다
+                            <br />
+                            앞으로 나아가려고 하며 용맹스럽고 적극적입니다
+                            <br />
+                            계획성이 적고 치밀하지 못한 편입니다
+                            <br />
                         </>
                     ),
                     info3: (
                         <>
-                            폐 기능이 좋고 간의 기능이 약합니다 <br />
-                            소변이 잘 나와야 건강합니다 <br />
+                            폐 기능이 좋고 간의 기능이 약합니다
+                            <br />
+                            소변이 잘 나와야 건강합니다
+                            <br />
                             변비가 오래가거나 입에서 침 또는 거품이 지속되면 큰
-                            병일 수 있습니다 <br />
+                            병일 수 있습니다
+                            <br />
                         </>
                     ),
+                    downloadImage: "../img/소음인.png",
                 };
             default:
                 return {
@@ -155,10 +165,12 @@ function Test({ type }) {
                     ),
                     info2: (
                         <>
-                            사회적 관계가 원만하고 적극적으로 남들과 소통합니다{" "}
+                            사회적 관계가 원만하고 적극적으로 남들과 소통합니다
                             <br />
-                            소통이 원활하지 않으면 화를 잘 냅니다 <br />
-                            조급한 경우가 많아 일을 그르치기도 합니다 <br />
+                            소통이 원활하지 않으면 화를 잘 냅니다
+                            <br />
+                            조급한 경우가 많아 일을 그르치기도 합니다
+                            <br />
                             앞으로 나아가려고 하며 용맹스럽고 적극적입니다
                             <br />
                             계획성이 적고 치밀하지 못한 편입니다
@@ -167,33 +179,90 @@ function Test({ type }) {
                     ),
                     info3: (
                         <>
-                            폐 기능이 좋고 간의 기능이 약합니다 <br />
+                            폐 기능이 좋고 간의 기능이 약합니다
+                            <br />
                             소변이 잘 나와야 건강합니다
                             <br /> 변비가 오래가거나 입에서 침 또는 거품이
                             지속되면 큰 병일 수 있습니다
                             <br />
                         </>
                     ),
+                    downloadImage: "../img/소음인.png",
                 };
         }
     };
 
-    // 선택된 타입에 따라 콘텐츠 가져오기
     const content = getContent(type);
 
-    const handleClick = () => {
-        alert("Button was clicked!");
-        // 추가적으로 버튼 클릭 시의 로직을 여기에 추가
+    const handleClick = async () => {
+        let surveyResultText = "";
+
+        // type에 따라 survey_result를 설정
+        switch (type) {
+            case 1:
+                surveyResultText = "태양인";
+                break;
+            case 2:
+                surveyResultText = "소양인";
+                break;
+            case 3:
+                surveyResultText = "태음인";
+                break;
+            case 4:
+                surveyResultText = "소음인";
+                break;
+            default:
+                surveyResultText = "Unknown";
+        }
+
+        const bodyText = {
+            survey_result: surveyResultText,
+        };
+
+        try {
+            const token = localStorage.getItem("token"); // 로컬 스토리지에서 토큰 가져오기
+
+            if (!token) {
+                alert("토큰이 존재하지 않습니다. 로그인 후 다시 시도해주세요.");
+                return;
+            }
+
+            const response = await axios.post(
+                `${process.env.REACT_APP_API}/accounts/survey/`,
+                bodyText,
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Token ${token}`, // 헤더에 토큰 추가
+                    },
+                }
+            );
+
+            console.log("Server response:", response.data);
+        } catch (error) {
+            console.error(
+                "Error submitting survey:",
+                error.response ? error.response.data : error.message
+            );
+            alert("An error occurred while submitting the survey.");
+        }
     };
 
     const toggleModal = () => {
         setIsModalOpen(!isModalOpen);
     };
+
     const copyToClipboard = () => {
-        const currentUrl = window.location.href; // 현재 페이지의 URL 가져오기
+        const currentUrl = window.location.href;
         navigator.clipboard.writeText(currentUrl).then(
             () => {
-                alert("URL이 클립보드에 복사되었습니다!");
+                setAlertMessage([
+                    "링크 복사를 완료했어요.",
+                    <br />,
+                    "친구에게 링크를 전달해보세요.",
+                ]);
+
+                setIsAlertOpen(true);
             },
             () => {
                 alert("URL 복사에 실패했습니다.");
@@ -201,100 +270,116 @@ function Test({ type }) {
         );
     };
 
-    // 페이지 캡처 및 이미지 다운로드 함수
-    const saveAsImage = () => {
-        const element = document.getElementById("capture"); // 캡처할 DOM 요소의 ID를 지정
-        html2canvas(element).then((canvas) => {
+    // 이미지 다운로드 함수
+    const saveImage = async () => {
+        try {
+            const response = await fetch(content.downloadImage);
+            const blob = await response.blob();
+            const url = window.URL.createObjectURL(blob);
             const link = document.createElement("a");
-            link.download = "screenshot.png";
-            link.href = canvas.toDataURL("image/png");
+            link.href = url;
+            link.download = `type${type}.png`;
+            document.body.appendChild(link);
             link.click();
-        });
+            document.body.removeChild(link);
+            window.URL.revokeObjectURL(url);
+
+            setAlertMessage([
+                "이미지가 저장되었어요.",
+                <br />,
+                "나의 사상체질 결과를 공유해보세요.",
+            ]);
+            setIsAlertOpen(true);
+        } catch (error) {
+            console.error("Error downloading image:", error);
+            alert("Failed to download image.");
+        }
     };
+
     return (
         <>
-            <C.Page>
-                <C.Center>
-                    <T.Background>
-                        <C.PageSpace>
-                            <T.Test>
-                                <Header
-                                    mainTitle={mainTitle}
-                                    subTitle={subTitle}
-                                />
-                                <T.ImgTitle>
-                                    <img
-                                        src={content.imageSrc}
-                                        alt="Human"
-                                        style={{
-                                            width: "50%",
-                                            display: "flex",
-                                            justifyContent: "center",
-                                            alignItems: "center",
-                                            position: "relative",
-                                            top: "4px",
-                                            zIndex: 0,
-                                        }}
+            <div id="capture">
+                <C.Page>
+                    <C.Center>
+                        <T.Background>
+                            <C.PageSpace>
+                                <T.Test>
+                                    <Header
+                                        mainTitle={mainTitle}
+                                        subTitle={subTitle}
                                     />
-                                    <img
-                                        src={content.titleSrc}
-                                        alt="Title"
-                                        style={{
-                                            width: "60%",
-                                            display: "flex",
-                                            justifyContent: "center",
-                                            alignItems: "center",
-                                            zIndex: 2,
-                                        }}
-                                    />
-                                </T.ImgTitle>
-                                <T.Detail>
-                                    <div className="Detailelements">
-                                        <div className="DetailIntro">
-                                            {content.introText}
-                                        </div>
-                                        <div>
-                                            <div className="Detailtitle">
-                                                체형기상
+                                    <T.ImgTitle>
+                                        <img
+                                            src={content.imageSrc}
+                                            alt="Human"
+                                            style={{
+                                                width: "50%",
+                                                display: "flex",
+                                                justifyContent: "center",
+                                                alignItems: "center",
+                                                top: "4px",
+                                            }}
+                                        />
+                                        <img
+                                            src={content.titleSrc}
+                                            alt="Title"
+                                            style={{
+                                                width: "60%",
+                                                display: "flex",
+                                                justifyContent: "center",
+                                                alignItems: "center",
+                                            }}
+                                        />
+                                    </T.ImgTitle>
+                                    <T.Detail>
+                                        <div className="Detailelements">
+                                            <div className="DetailIntro">
+                                                {content.introText}
                                             </div>
-                                            <div className="Deatilinfomation1">
-                                                {content.info1}
+                                            <div>
+                                                <div className="Detailtitle">
+                                                    <span>체형기상</span>
+                                                </div>
+                                                <div className="Deatilinfomation1">
+                                                    <span>
+                                                        {" "}
+                                                        {content.info1}
+                                                    </span>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div>
-                                            <div className="Detailtitle">
-                                                성질재간
+                                            <div>
+                                                <div className="Detailtitle">
+                                                    <span>성질재간</span>
+                                                </div>
+                                                <div className="Deatilinfomation2">
+                                                    <span>{content.info2}</span>
+                                                </div>
                                             </div>
-                                            <div className="Deatilinfomation2">
-                                                {content.info2}
+                                            <div>
+                                                <div className="Detailtitle">
+                                                    <span>병증약리</span>
+                                                </div>
+                                                <div className="Deatilinfomation3">
+                                                    <span>{content.info3}</span>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div>
-                                            <div className="Detailtitle">
-                                                병증약리
-                                            </div>
-                                            <div className="Deatilinfomation3">
-                                                {content.info3}
-                                            </div>
-                                        </div>
 
-                                        <T.ButtonContainer>
-                                            <T.Button onClick={handleClick}>
-                                                나의 사상체질로 저장하기
-                                            </T.Button>
-                                            <T.Button onClick={toggleModal}>
-                                                결과 공유하기
-                                            </T.Button>
-                                        </T.ButtonContainer>
-                                    </div>
-                                </T.Detail>
-                            </T.Test>
-                        </C.PageSpace>
-                    </T.Background>
-                </C.Center>
-            </C.Page>
-
-            {/* 모달 창 */}
+                                            <T.ButtonContainer>
+                                                <T.Button onClick={handleClick}>
+                                                    나의 사상체질로 저장하기
+                                                </T.Button>
+                                                <T.Button onClick={toggleModal}>
+                                                    결과 공유하기
+                                                </T.Button>
+                                            </T.ButtonContainer>
+                                        </div>
+                                    </T.Detail>
+                                </T.Test>
+                            </C.PageSpace>
+                        </T.Background>
+                    </C.Center>
+                </C.Page>
+            </div>
             {isModalOpen && (
                 <div
                     style={{
@@ -318,7 +403,6 @@ function Test({ type }) {
                             alignItems: "center",
                         }}
                     >
-                        {" "}
                         <button
                             onClick={toggleModal}
                             style={{
@@ -354,7 +438,7 @@ function Test({ type }) {
                                 justifyContent: "space-between",
                             }}
                         >
-                            {window.location.href} {/* 현재 URL 표시 */}
+                            {window.location.href}
                             <button
                                 style={{
                                     backgroundColor: "#6a1b3a",
@@ -390,7 +474,7 @@ function Test({ type }) {
                         >
                             이미지로 저장하기
                             <button
-                                onClick={saveAsImage}
+                                onClick={saveImage}
                                 style={{
                                     backgroundColor: "#6a1b3a",
                                     padding: "10px",
@@ -409,8 +493,6 @@ function Test({ type }) {
                     </div>
                 </div>
             )}
-
-            {/* 모달 뒤의 배경 */}
             {isModalOpen && (
                 <div
                     style={{
@@ -423,6 +505,62 @@ function Test({ type }) {
                         zIndex: 9,
                     }}
                     onClick={toggleModal}
+                ></div>
+            )}
+
+            {isAlertOpen && (
+                <div
+                    style={{
+                        position: "fixed",
+                        top: "50%",
+                        left: "50%",
+                        transform: "translate(-50%, -50%)",
+                        backgroundColor: "#000000",
+                        padding: "30px",
+                        paddingTop: "50px",
+                        borderRadius: "20px",
+                        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+                        zIndex: 10,
+                        width: "80%",
+                        maxWidth: "300px",
+                        textAlign: "center",
+                        color: "white",
+                    }}
+                >
+                    <p>{alertMessage}</p>
+                    <button
+                        onClick={() => setIsAlertOpen(false)}
+                        style={{
+                            background: "#000000",
+                            border: "none",
+                            padding: "10px",
+                            borderRadius: "5px",
+                            cursor: "pointer",
+                            width: "100%",
+                            marginTop: "40px",
+                            color: "#F5F5F5",
+                        }}
+                    >
+                        확인
+                    </button>
+                </div>
+            )}
+
+            {(isModalOpen || isAlertOpen) && (
+                <div
+                    style={{
+                        position: "fixed",
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        backgroundColor: "rgba(0, 0, 0, 0.5)",
+                        zIndex: 9,
+                    }}
+                    onClick={() => {
+                        setIsModalOpen(false);
+                        setIsAlertOpen(false);
+                    }}
                 ></div>
             )}
         </>

@@ -43,7 +43,7 @@ function TestIng() {
     const questions = [
         {
             id: "Q1",
-            question: "체구",
+            question: "1. 체구",
             options: [
                 "목덜미가 굵고 허리 부위가 가늘다",
                 "허리 부위가 굵고 목덜미가 가늘다",
@@ -53,7 +53,7 @@ function TestIng() {
         },
         {
             id: "Q2",
-            question: "체격",
+            question: "2. 체격",
             options: [
                 "건장하고 어깨 위로 발달되었다",
                 "체구와 풍채가 큰 편이다",
@@ -63,7 +63,7 @@ function TestIng() {
         },
         {
             id: "Q3",
-            question: "일 처리 방식",
+            question: "3. 일 처리 방식",
             options: [
                 "시원시원하고 막힘없이 한다",
                 "끝까지 포기하지 않고 꾸준하게 한다",
@@ -73,7 +73,7 @@ function TestIng() {
         },
         {
             id: "Q4",
-            question: "성격",
+            question: "4. 성격",
             options: [
                 "낯선 사람과도 쉽게 이야기할 수 있다",
                 "느긋하고 잘 받아들인다",
@@ -83,7 +83,7 @@ function TestIng() {
         },
         {
             id: "Q5",
-            question: "당신은 어디에 속하시나요?",
+            question: "5. 당신은 어디에 속하시나요?",
             options: [
                 "진취적이고 추진력이 강하다",
                 "행동 자체는 느리지만 꾸준하다",
@@ -93,7 +93,7 @@ function TestIng() {
         },
         {
             id: "Q6",
-            question: "당신이 자주 느끼는 감정은 무엇인가요?",
+            question: "6. 당신이 자주 느끼는 감정은 무엇인가요?",
             options: [
                 "앞뒤 가리지 않고 거침없이 행동하고 싶다",
                 "마음은 있지만 행동하기 어렵다",
@@ -103,7 +103,7 @@ function TestIng() {
         },
         {
             id: "Q7",
-            question: "당신의 행동 양식은 어디에 가까운가요?",
+            question: "7. 당신의 행동 양식은 어디에 가까운가요?",
             options: [
                 "공격적인 행동을 하는 편이다",
                 "변화를 두려워 한다",
@@ -113,7 +113,7 @@ function TestIng() {
         },
         {
             id: "Q8",
-            question: "자신이 어떻다고 느끼시나요?",
+            question: "8. 자신이 어떻다고 느끼시나요?",
             options: [
                 "급진적이고 함부로 행동할 때가 있다",
                 "보수적이고 욕심이 많은 편이다",
@@ -123,7 +123,7 @@ function TestIng() {
         },
         {
             id: "Q9",
-            question: "언제 건강 상태가 좋다고 느끼시나요?",
+            question: "9. 언제 건강 상태가 좋다고 느끼시나요?",
             options: [
                 "소변을 잘 볼 때",
                 "땀을 많이 흘릴 때",
@@ -133,7 +133,7 @@ function TestIng() {
         },
         {
             id: "Q10",
-            question: "어떤 성향을 가지고 있나요?",
+            question: "10. 어떤 성향을 가지고 있나요?",
             options: [
                 "과거의 일에는 미련이 없다",
                 "넓게 생각하고 이해해버린다",
@@ -143,7 +143,7 @@ function TestIng() {
         },
         {
             id: "Q11",
-            question: "욕심이 생기면 어떤 생각을 하나요?",
+            question: "11. 욕심이 생기면 어떤 생각을 하나요?",
             options: [
                 "예절과 예의를 차리기보다 마음대로 행동하고 싶다",
                 "더 많은 욕심을 부리고 싶다",
@@ -153,7 +153,7 @@ function TestIng() {
         },
         {
             id: "Q12",
-            question: "평소 당신에게 부족한 마음은 무엇인가요?",
+            question: "12. 평소 당신에게 부족한 마음은 무엇인가요?",
             options: [
                 "사양하는 마음",
                 "측은히 여기는 마음",
@@ -163,7 +163,8 @@ function TestIng() {
         },
         {
             id: "Q13",
-            question: "당신에게 잠재되어 있다고 생각하는 성향은 무엇인가요?",
+            question:
+                "13. 당신에게 잠재되어 있다고 생각하는 성향은 무엇인가요?",
             options: [
                 "더럽고 거친 면이 있다",
                 "교만하고 포악스러운 면이 있다",
@@ -173,7 +174,7 @@ function TestIng() {
         },
         {
             id: "Q14",
-            question: "당신은 어디에 속하시나요?",
+            question: "14. 당신은 어디에 속하시나요?",
             options: [
                 "자신은 게으르면서 다른 사람은 부지런히 하도록 한다",
                 "자신의 체면과 권위는 높이고 다른 사람은 낮춘다",
@@ -183,12 +184,12 @@ function TestIng() {
         },
         {
             id: "Q15",
-            question: "무엇에 가장 관심이 많으신가요?",
+            question: "15. 무엇에 가장 관심이 많으신가요?",
             options: ["세상의 권력", "돈과 재물", "명예", "지위"],
         },
         {
             id: "Q16",
-            question: "살면서 가장 많이 느끼는 것은 무엇인가요?",
+            question: "16. 살면서 가장 많이 느끼는 것은 무엇인가요?",
             options: [
                 "자신의 마음을 소중히 여기지 않는다",
                 "자신의 업무에 최선을 다하지 않는다",
@@ -198,7 +199,7 @@ function TestIng() {
         },
         {
             id: "Q17",
-            question: "어떤 충동을 가장 많이 느끼시나요?",
+            question: "17. 어떤 충동을 가장 많이 느끼시나요?",
             options: [
                 "남의 것을 훔치고 싶을 때가 있다",
                 "남의 것을 빼앗고 싶을 때가 있다",
@@ -208,7 +209,7 @@ function TestIng() {
         },
         {
             id: "Q18",
-            question: "당신은 어디에 속하시나요?",
+            question: "18. 당신은 어디에 속하시나요?",
             options: [
                 "친구를 사귈 때 여러 조건을 따지지 않는다",
                 "가정 일은 중시하지만 외부 일은 가볍게 생각한다",
@@ -218,7 +219,7 @@ function TestIng() {
         },
         {
             id: "Q19",
-            question: "당신은 어디에 속하시나요?",
+            question: "19. 당신은 어디에 속하시나요?",
             options: [
                 "모임을 잘 조직하고 운영하는 일이 잘 안되면 화가 난다",
                 "일이 잘 안되면 사치와 향락을 일삼고 싶다",
@@ -228,7 +229,7 @@ function TestIng() {
         },
         {
             id: "Q20",
-            question: "당신이 원하는 것은 무엇인가요?",
+            question: "20. 당신이 원하는 것은 무엇인가요?",
             options: [
                 "제멋대로 하고 싶다",
                 "욕심이 채워질 때까지 풍족해지고 싶다",
@@ -238,7 +239,7 @@ function TestIng() {
         },
         {
             id: "Q21",
-            question: "힘들고 어려운 상태에서 느끼는 감정은 무엇인가요?",
+            question: "21. 힘들고 어려운 상태에서 느끼는 감정은 무엇인가요?",
             options: [
                 "부귀(부유함)가 눈 앞에 있는 것 같다",
                 "이익이 눈 앞에 있는 것 같다",
@@ -248,7 +249,7 @@ function TestIng() {
         },
         {
             id: "Q22",
-            question: "당신이 지닌 성품은 어떠신가요?",
+            question: "22. 당신이 지닌 성품은 어떠신가요?",
             options: [
                 "말소리가 명확하고 사람을 잘 맞이한다",
                 "남을 잘 가르치고 원하는 답을 유도해낸다",
@@ -258,7 +259,7 @@ function TestIng() {
         },
         {
             id: "Q23",
-            question: "감정 조절이 어려울 때 나타나는 증상은 무엇인가요?",
+            question: "23. 감정 조절이 어려울 때 나타나는 증상은 무엇인가요?",
             options: [
                 "슬픔이 깊어지면 분노한다",
                 "기쁨이 넘치면 사치와 향락을 즐긴다",
@@ -268,7 +269,7 @@ function TestIng() {
         },
         {
             id: "Q24",
-            question: "당신이 자주 느끼는 감정은 무엇인가요?",
+            question: "24. 당신이 자주 느끼는 감정은 무엇인가요?",
             options: [
                 "남에게 같이 돕자고 하고 실제로 도울까 걱정한다",
                 "남에게 청렴하라고 하고 실제로 청렴할까 걱정한다",
@@ -278,7 +279,7 @@ function TestIng() {
         },
         {
             id: "Q25",
-            question: "당신은 어디에 속하나요?",
+            question: "25. 당신은 어디에 속하나요?",
             options: [
                 "하고 싶은 것을 못하면 분노가 생긴다",
                 "남에게로부터 무언가를 가져오거나 얻지 못할까 두렵다",
@@ -288,7 +289,7 @@ function TestIng() {
         },
         {
             id: "Q26",
-            question: "사람하는 판단하는 기준은 무엇인가요?",
+            question: "26. 사람하는 판단하는 기준은 무엇인가요?",
             options: [
                 "선과 악",
                 "근면과 게으름",
@@ -298,7 +299,7 @@ function TestIng() {
         },
         {
             id: "Q27",
-            question: "당신이 꺼려하는 사람은 무엇인가요?",
+            question: "27. 당신이 꺼려하는 사람은 무엇인가요?",
             options: [
                 "세밀하고 빈틈이 없는 사람",
                 "재산, 재물을 관리하고 경영하면서 의리가 있는 사람",
@@ -308,7 +309,7 @@ function TestIng() {
         },
         {
             id: "Q28",
-            question: "구토할 경우 증상이 어떠한가요?",
+            question: "28. 구토할 경우 증상이 어떠한가요?",
             options: [
                 "아무 이유 없이 구토 증세가 온다",
                 "구토를 한 이후에 병이 나은 적이 많다",
@@ -318,7 +319,7 @@ function TestIng() {
         },
         {
             id: "Q29",
-            question: "몸이 가벼워지는 경우는 어떨 때인가요?",
+            question: "29. 몸이 가벼워지는 경우는 어떨 때인가요?",
             options: [
                 "배변 시 덩어리가 크고 양이 많으면 몸이 가볍다",
                 "땀을 흘리고 나면 몸이 가볍다",
@@ -328,7 +329,7 @@ function TestIng() {
         },
         {
             id: "Q30",
-            question: "당신이 주로 느끼는 증상은 무엇인가요?",
+            question: "30. 당신이 주로 느끼는 증상은 무엇인가요?",
             options: [
                 "평소 소변이 많고 자주 본다",
                 "긴장을 하면 심장이 두근거린다",
@@ -345,30 +346,32 @@ function TestIng() {
         }));
     };
 
-    const handleClick = async () => {
-        const surveyData = Object.values(selectedOptions).map(Number);
-
-        const allQuestionsAnswered = surveyData.every(
+    const handleClick = () => {
+        // 선택지 중 하나라도 빈 값이 있는지 확인
+        const allAnswered = Object.values(selectedOptions).every(
             (option) => option !== ""
         );
 
-        if (allQuestionsAnswered) {
-            try {
-                const response = await axios.post(
-                    "http://127.0.0.1:8000/accounts/survey/",
-                    {
-                        survey_data: surveyData,
-                    }
-                );
-                console.log("Server response:", response.data);
-                alert(`Result: ${response.data.survey_result}`);
-            } catch (error) {
-                console.error("Error submitting survey:", error);
-                alert("An error occurred while submitting the survey.");
-            }
-        } else {
+        if (!allAnswered) {
+            // 선택하지 않은 질문이 있을 경우 경고 메시지 표시
             alert("모든 질문에 답해주세요.");
+            return;
         }
+
+        const optionCounts = [0, 0, 0, 0]; // 1, 2, 3, 4의 선택지 개수를 세기 위한 배열
+
+        // 선택된 옵션의 값을 모두 카운트
+        Object.values(selectedOptions).forEach((option) => {
+            if (option) {
+                optionCounts[parseInt(option) - 1]++;
+            }
+        });
+
+        // 가장 많이 선택된 옵션의 번호 찾기
+        const maxIndex = optionCounts.indexOf(Math.max(...optionCounts)) + 1;
+
+        // 다음 페이지로 이동하며 type을 전달
+        navigate(`/test`, { state: { type: maxIndex } });
     };
 
     return (
@@ -402,7 +405,9 @@ function TestIng() {
                             <T.TestQuestion>
                                 {questions.map((q, index) => (
                                     <div key={q.id}>
-                                        <h3>{q.question}</h3>
+                                        <div className="Qtitle">
+                                            {q.question}
+                                        </div>
                                         {q.options.map((option, optIndex) => (
                                             <label key={optIndex}>
                                                 <input
