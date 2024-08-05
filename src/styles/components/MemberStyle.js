@@ -128,7 +128,7 @@ export const btn = styled.div`
     cursor: pointer;
 `;
 
-export const other_func = styled.div`
+export const other_func = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -136,7 +136,8 @@ export const other_func = styled.div`
     height: 24px;
     color: #f5f5f5;
     cursor: pointer;
-
+    background-color: transparent;
+    border: none;
     font-size: 12px;
     font-weight: 600;
     line-height: 14.32px;
