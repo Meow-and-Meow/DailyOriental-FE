@@ -27,6 +27,7 @@ function Member() {
                         },
                     });
                     setUserInfo(response.data);
+                    console.log(response.data);
                 } catch (error) {
                     console.error("사용자 정보를 불러오는데 실패했습니다:", error);
                 }
@@ -43,10 +44,10 @@ function Member() {
     }; */
 
     const surveyImages = {
-        1: text_1,
-        2: text_2,
-        3: text_3,
-        4: text_4,
+        태양인: text_1,
+        소양인: text_2,
+        태음인: text_3,
+        소음인: text_4,
     };
 
     const resultImgSrc = surveyImages[userInfo.survey_result] || "";
@@ -107,15 +108,7 @@ function Member() {
                         <img src={resultImgSrc}></img>
                     </M.result_img>
                     <M.result_text>
-                        {userInfo.survey_result === 1
-                            ? "태양인"
-                            : userInfo.survey_result === 2
-                            ? "소양인"
-                            : userInfo.survey_result === 3
-                            ? "태음인"
-                            : userInfo.survey_result === 4
-                            ? "소음인"
-                            : "자가진단 하러가기"}
+                        {userInfo.survey_result ? userInfo.survey_result : "자가진단 하러가기"}
                     </M.result_text>
                 </M.result>
             </M.container>

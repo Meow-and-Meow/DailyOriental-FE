@@ -14,6 +14,7 @@ function MyPage() {
     useEffect(() => {
         const token = localStorage.getItem("token");
         const id = localStorage.getItem("user_id");
+
         if (token) {
             setIsLoggedIn(true);
         } else {
