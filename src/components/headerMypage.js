@@ -45,7 +45,7 @@ function HeaderMypage() {
                 <H.TitleImg>
                     <img src={profile} alt="프로필" />
                     <H.Title>
-                        <H.MainTitle>{userInfo.name ? userInfo.name : "비회원"}</H.MainTitle>
+                        <H.MainTitle>{userInfo.name ? userInfo.name : "-"}</H.MainTitle>
                         <H.SubName>{userInfo.is_member ? "회원" : "비회원"}</H.SubName>
                     </H.Title>
                 </H.TitleImg>
