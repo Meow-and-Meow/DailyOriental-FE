@@ -12,6 +12,7 @@ export const Nav = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+
     .Title {
         display: flex;
         flex-direction: column;
@@ -34,7 +35,8 @@ export const Adver = styled.div`
         color: #f7db8d;
         text-align: center;
         margin-top: 10%;
-        fo2746nt-size: 12px;
+        font-size: 12px;
+        font-family: "NanumMyeongjo"; /* 폰트 적용 */
     }
 `;
 export const InfoDetail = styled.div`

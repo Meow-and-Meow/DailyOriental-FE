@@ -38,32 +38,34 @@ export const TestQuestion = styled.div`
     color: #ffffff;
     font-family: "Arial", sans-serif;
 
-    h3 {
+    .Qtitle {
         color: #f7db8d;
-        font-size: 18px;
-        font-weight: bold;
+        font-size: 15px;
+
         margin-bottom: 10px;
+        margin-top: 10px;
     }
 
     label {
         display: block;
-        margin-bottom: 10px;
+        margin-bottom: 5px;
         font-size: 14px;
         cursor: pointer;
+        font-size: 12px;
     }
 
     input[type="radio"] {
         appearance: none;
         -webkit-appearance: none;
         -moz-appearance: none;
-        width: 20px;
-        height: 20px;
+        width: 11px;
+        height: 11px;
         border-radius: 50%;
         border: 2px solid #ccc;
         background-color: #ccc;
         cursor: pointer;
         position: relative;
-        margin-right: 10px;
+        margin-right: 5px;
     }
 
     input[type="radio"]:checked {
@@ -74,13 +76,13 @@ export const TestQuestion = styled.div`
     input[type="radio"]:checked::before {
         content: "";
         display: block;
-        width: 10px;
-        height: 10px;
+        width: 8px;
+        height: 8px;
         border-radius: 50%;
         background-color: #751f3f;
         position: absolute;
-        top: 3px;
-        left: 3px;
+        top: -0.3px;
+        left: -0.3px;
     }
 `;
 
