@@ -10,7 +10,9 @@ import human3 from "../img/human_3.png";
 import title1 from "../img/title_1.png";
 import title2 from "../img/title_2.png";
 import title3 from "../img/title_3.png";
-
+import humanR1 from "../img/result1.png";
+import humanR2 from "../img/result2.png";
+import humanR3 from "../img/result3.png";
 import Header from "../components/header";
 
 function Test() {
@@ -63,7 +65,6 @@ function Test() {
                             <br />
                         </>
                     ),
-                    downloadImage: "../img/소음인.png",
                 };
             case 2:
                 return {
@@ -99,7 +100,6 @@ function Test() {
                             병일 수 있습니다 <br />
                         </>
                     ),
-                    downloadImage: "../img/소음인.png",
                 };
             case 3:
                 return {
@@ -146,7 +146,6 @@ function Test() {
                             <br />
                         </>
                     ),
-                    downloadImage: "../img/소음인.png",
                 };
             default:
                 return {
@@ -187,7 +186,6 @@ function Test() {
                             <br />
                         </>
                     ),
-                    downloadImage: "../img/소음인.png",
                 };
         }
     };
@@ -239,6 +237,7 @@ function Test() {
             );
 
             console.log("Server response:", response.data);
+            navigate("/main"); // 원하는 경로로 변경하세요.
         } catch (error) {
             console.error(
                 "Error submitting survey:",
@@ -269,20 +268,21 @@ function Test() {
             }
         );
     };
-
+    const imageMap = {
+        1: humanR1,
+        2: humanR2,
+        3: humanR3,
+    };
     // 이미지 다운로드 함수
     const saveImage = async () => {
         try {
-            const response = await fetch(content.downloadImage);
-            const blob = await response.blob();
-            const url = window.URL.createObjectURL(blob);
+            const imageSrc = imageMap[type];
             const link = document.createElement("a");
-            link.href = url;
+            link.href = imageSrc;
             link.download = `type${type}.png`;
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
-            window.URL.revokeObjectURL(url);
 
             setAlertMessage([
                 "이미지가 저장되었어요.",
