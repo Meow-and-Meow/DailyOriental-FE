@@ -6,10 +6,13 @@ import DropdownItem from "./dropdownItem";
 import alarm from "../img/bell_main.png";
 import alarmNew from "../img/bell_new.png";
 
+import Loading from "../components/Loading";
+
 function HeaderAlarm() {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
   const [hasDropdownItems, setHasDropdownItems] = useState(false);
   const [dropdownItems, setDropdownItems] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const handleMenuClick = () => {
     setDropdownVisible(!isDropdownVisible);
@@ -37,6 +40,8 @@ function HeaderAlarm() {
       setHasDropdownItems(notifications.length > 0);
     } catch (error) {
       console.error("알림 정보를 불러오는데 실패했습니다:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -57,6 +62,8 @@ function HeaderAlarm() {
       fetchNotifications();
     } catch (error) {
       console.error("알람 삭제 실패:", error);
+    } finally {
+      setLoading(false);
     }
   };
 

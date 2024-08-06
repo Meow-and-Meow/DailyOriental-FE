@@ -16,6 +16,8 @@ import exerciseY from "../img/btn_exercise_y.png";
 import happinessY from "../img/btn_happy_y.png";
 import dietY from "../img/btn_meal_y.png";
 
+import Loading from "../components/Loading";
+
 function MyMission() {
   const mainTitle = "매일한방 매일습관";
   const subTitle = "나의 체질에 맞는 건강 습관 만들기";
@@ -23,6 +25,7 @@ function MyMission() {
   const [selectedCategory, setSelectedCategory] = useState("기분");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [missions, setMissions] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchMissions(selectedCategory);
@@ -42,6 +45,8 @@ function MyMission() {
       setMissions(response.data);
     } catch (error) {
       console.error(`${category} 카테고리의 미션을 불러오는데 실패했습니다:`, error);
+    } finally {
+      setLoading(false);
     }
   };
 

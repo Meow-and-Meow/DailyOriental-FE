@@ -6,6 +6,7 @@ import * as M from "../styles/MissionStyle";
 
 import Header from "../components/header";
 import MissionSpace from "../components/mission/missionSpace";
+import Loading from "../components/Loading";
 
 // 오늘 날짜를 YYYY-MM-DD 형식으로 반환하는 함수
 const getTodayDate = () => {
@@ -20,6 +21,7 @@ function Mission() {
   const navigate = useNavigate();
   const [dateInfo, setDateInfo] = useState("");
   const [completedMissions, setCompletedMissions] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -53,6 +55,8 @@ function Mission() {
           }
         } catch (error) {
           console.error("날짜 정보를 불러오는데 실패했습니다:", error);
+        } finally {
+          setLoading(false);
         }
       };
 
@@ -66,6 +70,8 @@ function Mission() {
           setCompletedMissions(response.data);
         } catch (error) {
           console.error("미션 정보를 불러오는데 실패했습니다:", error);
+        } finally {
+          setLoading(false);
         }
       };
 
@@ -113,6 +119,8 @@ function Mission() {
           setCompletedMissions(response.data);
         } catch (error) {
           console.error("미션 정보를 불러오는데 실패했습니다:", error);
+        } finally {
+          setLoading(false);
         }
       };
 
@@ -127,6 +135,8 @@ function Mission() {
           setDateInfo(fetchResponse.data);
         } catch (error) {
           console.error("날짜 정보를 불러오는데 실패했습니다:", error);
+        } finally {
+          setLoading(false);
         }
       };
 
@@ -138,6 +148,8 @@ function Mission() {
         ...prevInfo,
         [field]: !prevInfo[field],
       }));
+    } finally {
+      setLoading(false);
     }
   };
 

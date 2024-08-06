@@ -3,9 +3,11 @@ import axios from "axios";
 import * as M from "../styles/components/ModalMissionStyle";
 
 import close from "../img/close_btn.png";
+import Loading from "../components/Loading";
 
 const ModalMission = ({ onClose, selectedCategory }) => {
   const [newMission, setNewMission] = useState("");
+  const [loading, setLoading] = useState(true);
 
   const handleMissionChange = (e) => {
     setNewMission(e.target.value);
@@ -39,6 +41,8 @@ const ModalMission = ({ onClose, selectedCategory }) => {
       onClose(true); // 새 미션 추가 후 모달 닫기 및 목록 새로 고침 요청
     } catch (error) {
       console.error("미션 추가 실패:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
