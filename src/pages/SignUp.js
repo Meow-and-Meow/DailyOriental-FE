@@ -18,6 +18,7 @@ function SignUp() {
         phone: "",
         reason: "",
     });
+    const [errorMessage, setErrorMessage] = useState("");
 
     const handleGenderClick = (gender) => {
         setSelectedGender((prev) => (prev === gender ? "" : gender));
@@ -43,7 +44,7 @@ function SignUp() {
             navigate("/join");
         } catch (error) {
             console.error("회원가입 에러:", error.response.data);
-            window.alert("회원가입에 실패했습니다.다시 시도해주세요.");
+            window.alert("회원가입에 실패했습니다.다시 시도해주세요.\n" + error.response.data.id);
         }
     };
 
