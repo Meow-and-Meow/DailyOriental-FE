@@ -140,7 +140,7 @@ function AI() {
                                 <A.tip>
                                     <A.tip_text>Tip. 이렇게 물어보면 좋아요</A.tip_text>
                                     <br></br>
-                                    <A.tip_text> ∙ 건강관리법을 알려줘</A.tip_text>
+                                    <A.tip_text> ∙ 건강관리방법을 알려줘</A.tip_text>
                                     <A.tip_text> ∙ 피해야 하는 음식을 알려줘</A.tip_text>
                                     <A.tip_text> ∙ 치명적인 병을 알려줘</A.tip_text>
                                     <A.tip_text> ∙ 조심해야하는 생활습관을 알려줘</A.tip_text>
