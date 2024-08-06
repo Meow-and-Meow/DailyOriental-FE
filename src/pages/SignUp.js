@@ -123,6 +123,9 @@ function SignUp() {
                                         <S.content>
                                             <S.label>연령</S.label>
                                             <S.select name="age" value={formData.age} onChange={handleChange}>
+                                                <S.option value="" disabled hidden>
+                                                    연령
+                                                </S.option>
                                                 <S.option value="10" name="10">
                                                     10대
                                                 </S.option>
@@ -159,6 +162,9 @@ function SignUp() {
                                         <S.content>
                                             <S.label>가입사유</S.label>
                                             <S.select name="reason" value={formData.reason} onChange={handleChange}>
+                                                <S.option value="" disabled hidden>
+                                                    가입사유
+                                                </S.option>
                                                 <S.option value="interest" name="interest">
                                                     한방에 대한 관심
                                                 </S.option>
