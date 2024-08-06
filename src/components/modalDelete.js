@@ -5,7 +5,7 @@ import * as M from "../styles/components/ModalDeleteStyle";
 import Loading from "../components/Loading";
 
 const ModalDelete = ({ onClose, isModalVisible3 }) => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
   const handleWithdraw = () => {

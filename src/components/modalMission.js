@@ -7,7 +7,7 @@ import Loading from "../components/Loading";
 
 const ModalMission = ({ onClose, selectedCategory }) => {
   const [newMission, setNewMission] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const handleMissionChange = (e) => {
     setNewMission(e.target.value);

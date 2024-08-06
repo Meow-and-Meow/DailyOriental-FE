@@ -10,7 +10,7 @@ import Loading from "../components/Loading";
 
 function SignUp() {
   const [selectedGender, setSelectedGender] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     id: "",
     password: "",

@@ -16,7 +16,7 @@ import Loading from "../components/Loading";
 function Member() {
   const navigate = useNavigate();
   const [userInfo, setUserInfo] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("token");

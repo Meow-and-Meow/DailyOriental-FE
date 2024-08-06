@@ -9,7 +9,7 @@ import naver from "../img/icon_naver.png";
 import Loading from "../components/Loading";
 
 function Join() {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSignup = () => {

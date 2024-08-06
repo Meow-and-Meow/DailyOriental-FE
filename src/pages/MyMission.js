@@ -25,7 +25,7 @@ function MyMission() {
   const [selectedCategory, setSelectedCategory] = useState("기분");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [missions, setMissions] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     fetchMissions(selectedCategory);

@@ -12,7 +12,7 @@ function HeaderAlarm() {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
   const [hasDropdownItems, setHasDropdownItems] = useState(false);
   const [dropdownItems, setDropdownItems] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const handleMenuClick = () => {
     setDropdownVisible(!isDropdownVisible);

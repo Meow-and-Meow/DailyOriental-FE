@@ -15,7 +15,7 @@ function HeaderMypage() {
   };
 
   const [userInfo, setUserInfo] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("token");

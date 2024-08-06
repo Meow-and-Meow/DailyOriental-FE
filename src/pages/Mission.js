@@ -21,7 +21,7 @@ function Mission() {
   const navigate = useNavigate();
   const [dateInfo, setDateInfo] = useState("");
   const [completedMissions, setCompletedMissions] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
