@@ -102,7 +102,7 @@ export const text = styled.div`
     text-align: center;
     justify-content: end;
     align-items: center;
-    width: 113px;
+    width: 130px;
     height: 24px;
     font-family: "Pretendard";
     font-weight: 600;
