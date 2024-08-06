@@ -23,7 +23,7 @@ function Main() {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [category, setCategory] = useState("test");
+  const [category, setCategory] = useState("testStart");
 
   const openModal = () => {
     // 클립보드에 링크 복사
@@ -40,7 +40,7 @@ function Main() {
     }, 400); // 400ms 후에 모달 상태를 false로 설정
   };
 
-  const categories = ["test", "ai", "acupressure", "mission"];
+  const categories = ["testStart", "ai", "acupressure", "mission"];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -69,7 +69,7 @@ function Main() {
                   </M.Title>
                   <M.Btns>
                     <M.MainBtns>
-                      <M.testBtn onClick={() => handleNavLinkClick("/test")}>
+                      <M.testBtn onClick={() => handleNavLinkClick("/testStart")}>
                         <img src={testBtn} alt="자가진단" />
                       </M.testBtn>
                       <M.massageBtn onClick={() => handleNavLinkClick("/acupressure")}>
