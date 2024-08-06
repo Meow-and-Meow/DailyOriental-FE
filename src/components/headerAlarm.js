@@ -8,8 +8,8 @@ import alarmNew from "../img/bell_new.png";
 
 function HeaderAlarm() {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
-  const [hasDropdownItems, setHasDropdownItems] = useState(false);
   const [dropdownItems, setDropdownItems] = useState([]);
+  const [hasNewItems, setHasNewItems] = useState(false);
 
   const handleMenuClick = () => {
     setDropdownVisible(!isDropdownVisible);
@@ -21,10 +21,7 @@ function HeaderAlarm() {
 
   const fetchNotifications = async () => {
     const token = localStorage.getItem("token");
-
-    if (!token) {
-      return;
-    }
+    if (!token) return;
 
     try {
       const response = await axios.get(`${process.env.REACT_APP_API}/alarm/notifications/`, {
@@ -32,12 +29,27 @@ function HeaderAlarm() {
           Authorization: `Token ${token}`,
         },
       });
-
-      const notifications = response.data;
-      setDropdownItems(notifications);
-      setHasDropdownItems(notifications.length > 0);
+      setDropdownItems(response.data);
+      setHasNewItems(response.data.some((item) => !item.is_read));
     } catch (error) {
-      console.error("알림 정보를 불러오는데 실패했습니다:", error);
+      console.error("Failed to fetch notifications:", error);
+    }
+  };
+
+  const markAsRead = async (id) => {
+    const token = localStorage.getItem("token");
+    if (!token) return;
+
+    try {
+      await axios.get(`${process.env.REACT_APP_API}/alarm/notifications/${id}/`, {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      });
+      // fetchNotifications를 호출하여 상태를 최신화
+      fetchNotifications();
+    } catch (error) {
+      console.error("Failed to mark notification as read:", error);
     }
   };
 
@@ -56,22 +68,20 @@ function HeaderAlarm() {
     <>
       <H.Header>
         <H.Alarm onClick={handleMenuClick} $isVisible={isDropdownVisible}>
-          <img src={hasDropdownItems ? alarmNew : alarm} alt="알람" />
+          <img src={hasNewItems ? alarmNew : alarm} alt="알람" />
         </H.Alarm>
       </H.Header>
 
       {isDropdownVisible && (
         <>
           <H.Background onClick={closeMenuClick} />
-          <H.DropdownContainer $isVisible={isDropdownVisible} $hasDropdownItems={hasDropdownItems}>
-            {hasDropdownItems ? (
+          <H.DropdownContainer $isVisible={isDropdownVisible} $hasDropdownItems={hasNewItems}>
+            {dropdownItems.length > 0 ? (
               dropdownItems.map((item) => (
                 <DropdownItem
                   key={item.id}
                   category={item.message_type === "Daily Mission" ? "mission" : item.message_type === "Health Tip" ? "ai" : "acupressure"}
-                  message={item.message}
-                  url={item.url}
-                  urlText={item.url_text}
+                  onItemClick={() => markAsRead(item.id)}
                 />
               ))
             ) : (

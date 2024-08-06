@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Background = styled.div`
   width: 100%;
-  height: calc(100dvh - 80px - 19.5px);
+  min-height: calc(100dvh - 80px - 19.5px);
   margin-top: -19.5px;
   background-color: #f7db8d;
   border-radius: 20px 20px 0 0;
@@ -24,14 +24,23 @@ export const Time = styled.div`
   color: #28272a;
 `;
 
-export const Small = styled.div`
+export const Small1 = styled.div`
   padding-bottom: 5px;
+  width: 45px;
+  text-align: right;
+`;
+
+export const Small2 = styled.div`
+  padding-bottom: 5px;
+  width: 45px;
 `;
 
 export const Big = styled.div`
   font-size: 28px;
   font-weight: 600;
   line-height: 33.41px;
+  width: 210px;
+  text-align: center;
 `;
 
 export const Btns = styled.div`
@@ -75,7 +84,6 @@ export const BtnText = styled.div`
   text-align: center;
 
   width: 50px;
-  height: 30px;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 2; /* 표시할 줄 수를 변경할 수 있습니다 */
@@ -162,4 +170,11 @@ export const DateList = styled.div`
   img {
     width: 30px;
   }
+`;
+
+export const CalenderSpace = styled.div`
+  width: 100%;
+  border-radius: 20px 20px 0 0;
+  background-color: #f5f5f5;
+  margin-top: 14px;
 `;

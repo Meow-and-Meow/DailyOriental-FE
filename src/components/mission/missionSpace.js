@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { StyledCalendarWrapper, StyledCalendar } from "../../styles/components/CalenderStyle";
 import * as M from "../../styles/components/mission/MissionSpaceStyle";
+
+import CalenderInfo from "../Calender";
 
 import moodBtn from "../../img/Arch_feeling_650x650.png";
 import exerciseBtn from "../../img/Arch_exercise_650x650.png";
@@ -85,15 +87,17 @@ function MissionSpace({ dateInfo, completedMissions, onMissionClick }) {
     }
   };
 
+  const attendDays = completedMissions.filter((mission) => mission.all_completed).map((mission) => mission.date);
+
   return (
     <>
       <M.Background>
         <M.Time>
-          <M.Small>오늘은</M.Small>
+          <M.Small1>오늘은</M.Small1>
           <M.Big>
             {hour}H : {minute}M : {second}s
           </M.Big>
-          <M.Small>남았어요</M.Small>
+          <M.Small2>남았어요</M.Small2>
         </M.Time>
 
         <M.Btns>
@@ -120,7 +124,7 @@ function MissionSpace({ dateInfo, completedMissions, onMissionClick }) {
           <img src={dateInfo.all_completed ? check : list} alt="프로필" />
         </M.ToList>
 
-        <M.DateBtn>{`${info.date.substring(5, 7)}월 ${info.week_of_month}주차`}</M.DateBtn>
+        <M.DateBtn>{`${parseInt(info.date.substring(5, 7), 10)}월 ${info.week_of_month}주차`}</M.DateBtn>
         <M.DateList>
           <img src={getDayImage("monday")} alt="월요일" />
           <img src={getDayImage("tuesday")} alt="화요일" />
@@ -130,6 +134,9 @@ function MissionSpace({ dateInfo, completedMissions, onMissionClick }) {
           <img src={getDayImage("saturday")} alt="토요일" />
           <img src={getDayImage("sunday")} alt="일요일" />
         </M.DateList>
+        <M.CalenderSpace>
+          <CalenderInfo attendDays={attendDays} />
+        </M.CalenderSpace>
       </M.Background>
     </>
   );
