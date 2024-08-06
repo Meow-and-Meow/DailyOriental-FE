@@ -354,6 +354,10 @@ function Test() {
     }
   };
 
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <>
       <div id="capture">

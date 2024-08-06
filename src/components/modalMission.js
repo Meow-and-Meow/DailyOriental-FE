@@ -46,6 +46,10 @@ const ModalMission = ({ onClose, selectedCategory }) => {
     }
   };
 
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <>
       <M.ModalBackground onClick={onClose} />

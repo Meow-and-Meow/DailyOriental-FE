@@ -53,6 +53,10 @@ function SignUp() {
     }
   };
 
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <>
       <C.Page>

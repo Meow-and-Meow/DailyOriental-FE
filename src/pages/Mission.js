@@ -153,6 +153,10 @@ function Mission() {
     }
   };
 
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <>
       <C.Page>

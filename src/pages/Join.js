@@ -48,6 +48,10 @@ function Join() {
     }
   };
 
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <>
       <C.Page>

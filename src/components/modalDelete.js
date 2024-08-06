@@ -31,6 +31,10 @@ const ModalDelete = ({ onClose, isModalVisible3 }) => {
     deleteUserData();
   };
 
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <>
       <M.ModalBackground onClick={onClose} />
