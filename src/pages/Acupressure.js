@@ -107,7 +107,7 @@ function Acupressure() {
         setVisibleImages({});
         if (currentImage === Hand) {
             setCurrentImage(Foot); // Hand 이미지를 Foot 이미지로 변경
-            setCurrentBtnImage(btnFoot); // btnHand 이미지를 btnFoot 이미지로 변경
+            setCurrentBtnImage(btnHand); // btnHand 이미지를 btnFoot 이미지로 변경
             setButtonLabels([
                 "비염/축농증",
                 "목 디스크",
@@ -128,7 +128,7 @@ function Acupressure() {
             ]); // Foot 이미지에 해당하는 버튼 라벨로 변경
         } else {
             setCurrentImage(Hand); // 다시 Foot 이미지를 Hand 이미지로 변경
-            setCurrentBtnImage(btnHand); // btnFoot 이미지를 btnHand 이미지로 변경
+            setCurrentBtnImage(btnFoot); // btnFoot 이미지를 btnHand 이미지로 변경
             setButtonLabels([
                 "발바닥",
                 "간",
