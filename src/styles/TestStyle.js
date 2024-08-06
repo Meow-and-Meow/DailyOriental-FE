@@ -28,25 +28,34 @@ export const Detail = styled.div`
     .DetailIntro {
         text-align: center;
         align-items: center;
+        margin-bottom: 10%;
+        font-size: 11px;
     }
     .Detailelements {
         padding: 30px;
-        padding-top: 100px;
+        padding-top: 90px;
     }
     .Detailtitle {
         color: #79212f;
         font-size: 20px;
         font-weight: 700;
         margin: 10px;
+        font-size: 15px;
     }
     .Deatilinfomation1 {
         margin: 10px;
+        font-size: 11px;
+        font-weight: 550;
     }
     .Deatilinfomation2 {
         margin: 10px;
+        font-size: 11px;
+        font-weight: 550;
     }
     .Deatilinfomation3 {
         margin: 10px;
+        font-size: 11px;
+        font-weight: 550;
     }
 `;
 
@@ -62,7 +71,7 @@ export const Button = styled.div`
     border: none; /* 테두리 없음 */
     border-radius: 30px; /* 모서리 둥글게 */
     padding: 10px 20px; /* 내부 여백 */
-    font-size: 16px; /* 텍스트 크기 */
+    font-size: 12px; /* 텍스트 크기 */
     cursor: pointer; /* 마우스 오버 시 포인터 커서 */
     width: 200px; /* 버튼의 너비 */
     display: flex; /* 내용물 정렬을 위한 flexbox 사용 */
