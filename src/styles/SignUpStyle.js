@@ -21,7 +21,6 @@ export const sub_background = styled.div`
     background-color: #f5f5f5;
     border-radius: 15rem 0 0 0;
     box-shadow: inset 7px -8px 4px rgba(0, 0, 0, 0.15);
-    margin-top: -5rem;
 `;
 
 export const title = styled.div`
