@@ -4,7 +4,17 @@ export const Background = styled.div`
     background: linear-gradient(to bottom, #cee5db 50%, #f7db8d 50%);
 `;
 
-export const Test = styled.div``;
+export const Test = styled.div`
+    .Navstyle {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: calc(100% - 52px);
+        padding: 0 26px;
+        height: 30px;
+        margin: 25px 0;
+    }
+`;
 
 export const Nav = styled.div``;
 
@@ -15,14 +25,13 @@ export const ImgTitle = styled.div`
     position: relative; /* Ensure it can stack with z-index */
     top: -50px;
     z-index: 2; /* Higher than the Detail box */
-    margin-top: 15%;
 `;
 
 export const Detail = styled.div`
     background: #f7db8d;
     border-radius: 30px 30px 0 0;
     position: relative; /* Allows for positioning relative to its normal position */
-    top: -100px; /* Moves the element upwards, overlapping the above element */
+    top: -80px; /* Moves the element upwards, overlapping the above element */
     z-index: 1; /* Ensures the Detail box is above other content */
 
     .DetailIntro {
@@ -34,8 +43,9 @@ export const Detail = styled.div`
         font-weight: 550;
     }
     .Detailelements {
-        padding: 30px;
-        padding-top: 60px;
+        padding-right: 30px;
+        padding-left: 30px;
+        padding-top: 50px;
     }
     .Detailtitle {
         color: #79212f;

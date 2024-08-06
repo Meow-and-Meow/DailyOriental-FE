@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import * as C from "../styles/CommonStyle";
 import * as T from "../styles/TestIngStyle";
-import navbar from "../img/back_w.png";
+import Header from "../components/header";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function TestIng() {
+    const mainTitle = "사상체질 자가진단";
+    const subTitle = "태양인/소양인/태음인/소음인";
     const navigate = useNavigate();
     const [selectedOptions, setSelectedOptions] = useState({
         Q1: "",
@@ -338,6 +340,17 @@ function TestIng() {
             ],
         },
     ];
+    const [isAllAnswered, setIsAllAnswered] = useState(false);
+    useEffect(() => {
+        // 모든 질문에 답했는지 확인하는 함수
+        const checkAllAnswered = () => {
+            return Object.values(selectedOptions).every(
+                (option) => option !== ""
+            );
+        };
+
+        setIsAllAnswered(checkAllAnswered());
+    }, [selectedOptions]); // 선택된 옵션이 변경될 때마다 호출
 
     const handleOptionChange = (question, value) => {
         setSelectedOptions((prev) => ({
@@ -347,15 +360,8 @@ function TestIng() {
     };
 
     const handleClick = () => {
-        // 선택지 중 하나라도 빈 값이 있는지 확인
-        const allAnswered = Object.values(selectedOptions).every(
-            (option) => option !== ""
-        );
-
-        if (!allAnswered) {
-            // 선택하지 않은 질문이 있을 경우 경고 메시지 표시
-            alert("모든 질문에 답해주세요.");
-            return;
+        if (!isAllAnswered) {
+            return; // 모든 질문에 답하지 않으면 함수 종료
         }
 
         const optionCounts = [0, 0, 0, 0]; // 1, 2, 3, 4의 선택지 개수를 세기 위한 배열
@@ -367,11 +373,10 @@ function TestIng() {
             }
         });
 
-        // 가장 많이 선택된 옵션의 번호 찾기
         const maxIndex = optionCounts.indexOf(Math.max(...optionCounts)) + 1;
 
-        // 다음 페이지로 이동하며 type을 전달
-        navigate(`/test`, { state: { type: maxIndex } });
+        // type 값을 쿼리 파라미터로 추가하여 이동
+        navigate(`/test?type=${maxIndex}`);
     };
 
     return (
@@ -381,25 +386,10 @@ function TestIng() {
                     <C.PageSpace>
                         <T.Test>
                             <T.Nav>
-                                <img
-                                    src={navbar}
-                                    alt="Navbar"
-                                    onClick={() => navigate(-1)} // 이전 페이지로 이동
-                                    style={{
-                                        width: "18px",
-                                        height: "18px",
-                                        cursor: "pointer",
-                                    }}
+                                <Header
+                                    mainTitle={mainTitle}
+                                    subTitle={subTitle}
                                 />
-                                <div className="Title">
-                                    <div className="TopTitle">
-                                        사상체질 자가진단
-                                    </div>
-                                    <div className="TitleInfo">
-                                        태양인/소양인/태음인/소음인
-                                    </div>
-                                </div>
-                                <div></div>
                             </T.Nav>
 
                             <T.TestQuestion>
@@ -439,7 +429,18 @@ function TestIng() {
                             </T.TestQuestion>
 
                             <T.ButtonContainer>
-                                <T.Button onClick={handleClick}>
+                                <T.Button
+                                    onClick={handleClick}
+                                    disabled={!isAllAnswered} // 모든 질문에 답하지 않으면 비활성화
+                                    style={{
+                                        backgroundColor: isAllAnswered
+                                            ? "#751f3f"
+                                            : "#ccc", // 답변이 완료되면 기존 색상, 그렇지 않으면 회색
+                                        cursor: isAllAnswered
+                                            ? "pointer"
+                                            : "not-allowed", // 답변이 완료되면 포인터, 그렇지 않으면 not-allowed
+                                    }}
+                                >
                                     결과 확인하기
                                 </T.Button>
                             </T.ButtonContainer>
