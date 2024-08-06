@@ -55,7 +55,7 @@ export const CategoryTitle = styled.div`
 
 export const MissionList = styled.div`
   width: 100%;
-  height: calc(100dvh - 80px - 83px - 33px - 16px);
+  min-height: calc(100dvh - 80px - 83px - 33px - 16px);
   margin-top: -16px;
   background-color: #f7db8d;
   border-radius: 20px 20px 0 0;
@@ -75,10 +75,9 @@ export const Missions = styled.div`
 `;
 
 export const Mission = styled.div`
-  width: calc(312px - 56px);
-  height: calc(40px - 16px);
+  width: calc(312px - 52px);
   border-radius: 20px;
-  padding: 8px 28px;
+  padding: 12px 26px;
   background-color: #f5f5f5;
 
   display: flex;
@@ -92,10 +91,9 @@ export const Mission = styled.div`
 `;
 
 export const PlusMission = styled.div`
-  width: calc(312px - 56px);
-  height: calc(40px - 16px);
+  width: calc(312px - 52px);
   border-radius: 20px;
-  padding: 8px 28px;
+  padding: 12px 26px;
   background-color: #f5f5f5;
 
   display: flex;
@@ -144,7 +142,5 @@ export const MBtn = styled.div`
   line-height: 29.83px;
   color: #f5f5f5;
   padding-bottom: 4px;
-
-  position: absolute;
-  bottom: 57px;
+  margin: 33px 0;
 `;

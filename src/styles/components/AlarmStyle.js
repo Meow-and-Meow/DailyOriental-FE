@@ -33,7 +33,7 @@ export const DropdownContainer = styled.div`
   gap: 15px;
 
   width: calc(203px - 4px);
-  height: calc(206px - 40px);
+  min-height: 45.2px;
   border-radius: 20px 0px 0px 20px;
   border: 2px solid #28272a;
 

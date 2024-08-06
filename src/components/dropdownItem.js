@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import * as D from "../styles/components/DropdownItemStyle";
 
-function DropdownItem({ category }) {
+function DropdownItem({ category, onDelete }) {
   const navigate = useNavigate();
 
   const handleNavLinkClick = (path) => {
@@ -31,7 +31,12 @@ function DropdownItem({ category }) {
 
   return (
     <>
-      <D.DropdownItem onClick={() => handleNavLinkClick(`/${category}`)}>
+      <D.DropdownItem
+        onClick={() => {
+          handleNavLinkClick(`/${category}`);
+          onDelete();
+        }}
+      >
         <D.Text>
           <D.DropTitle>{title}</D.DropTitle>
           <D.DropLink>{content}</D.DropLink>

@@ -8,8 +8,8 @@ import alarmNew from "../img/bell_new.png";
 
 function HeaderAlarm() {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
+  const [hasDropdownItems, setHasDropdownItems] = useState(false);
   const [dropdownItems, setDropdownItems] = useState([]);
-  const [hasNewItems, setHasNewItems] = useState(false);
 
   const handleMenuClick = () => {
     setDropdownVisible(!isDropdownVisible);
@@ -21,57 +21,49 @@ function HeaderAlarm() {
 
   const fetchNotifications = async () => {
     const token = localStorage.getItem("token");
-    if (!token) return;
 
+    if (!token) {
+      return;
+    }
     try {
       const response = await axios.get(`${process.env.REACT_APP_API}/alarm/notifications/`, {
         headers: {
           Authorization: `Token ${token}`,
         },
       });
-      setDropdownItems(response.data);
-      setHasNewItems(response.data.some((item) => !item.is_read));
+
+      const notifications = response.data;
+      setDropdownItems(notifications);
+      setHasDropdownItems(notifications.length > 0);
     } catch (error) {
-      console.error("Failed to fetch notifications:", error);
+      console.error("알림 정보를 불러오는데 실패했습니다:", error);
     }
   };
 
-  const markAsRead = async (id) => {
+  const deleteNotification = async (id) => {
     const token = localStorage.getItem("token");
-    if (!token) return;
+
+    if (!token) {
+      console.error("토큰이 없습니다.");
+      return;
+    }
 
     try {
-      const notification = dropdownItems.find((item) => item.id === id);
-      if (!notification) return;
-
-      await axios.put(
-        `${process.env.REACT_APP_API}/alarm/notifications/${id}/`,
-        {
-          ...notification,
-          is_read: true,
+      await axios.delete(`${process.env.REACT_APP_API}/alarm/notifications/${id}/`, {
+        headers: {
+          Authorization: `Token ${token}`,
         },
-        {
-          headers: {
-            Authorization: `Token ${token}`,
-          },
-        }
-      );
-
-      // fetchNotifications를 호출하여 상태를 최신화
+      });
       fetchNotifications();
     } catch (error) {
-      console.error("Failed to mark notification as read:", error);
+      console.error("알람 삭제 실패:", error);
     }
   };
 
   useEffect(() => {
-    // 최초 로드 시 알림을 불러옵니다.
     fetchNotifications();
-
-    // 5초 간격으로 알림을 불러옵니다.
     const intervalId = setInterval(fetchNotifications, 5000);
 
-    // 컴포넌트 언마운트 시 interval을 정리합니다.
     return () => clearInterval(intervalId);
   }, []);
 
@@ -79,20 +71,20 @@ function HeaderAlarm() {
     <>
       <H.Header>
         <H.Alarm onClick={handleMenuClick} $isVisible={isDropdownVisible}>
-          <img src={hasNewItems ? alarmNew : alarm} alt="알람" />
+          <img src={hasDropdownItems ? alarmNew : alarm} alt="알람" />
         </H.Alarm>
       </H.Header>
 
       {isDropdownVisible && (
         <>
           <H.Background onClick={closeMenuClick} />
-          <H.DropdownContainer $isVisible={isDropdownVisible} $hasDropdownItems={hasNewItems}>
-            {dropdownItems.length > 0 ? (
+          <H.DropdownContainer $isVisible={isDropdownVisible} $hasDropdownItems={hasDropdownItems}>
+            {hasDropdownItems ? (
               dropdownItems.map((item) => (
                 <DropdownItem
                   key={item.id}
                   category={item.message_type === "Daily Mission" ? "mission" : item.message_type === "Health Tip" ? "ai" : "acupressure"}
-                  onItemClick={() => markAsRead(item.id)}
+                  onDelete={() => deleteNotification(item.id)}
                 />
               ))
             ) : (

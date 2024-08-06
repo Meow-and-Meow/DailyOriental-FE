@@ -148,12 +148,16 @@ function MyMission() {
                 <M.CategoryTitle>{getCategoryTitle()}</M.CategoryTitle>
                 <M.MissionList>
                   <M.Missions>
-                    {missions.map((mission) => (
-                      <M.PlusMission key={mission.id}>
-                        {mission.text}
-                        <M.DBtn onClick={() => handleMissionDelete(mission.id)}>-</M.DBtn>
-                      </M.PlusMission>
-                    ))}
+                    {missions.map((mission) =>
+                      mission.default ? (
+                        <M.Mission key={mission.id}>{mission.text}</M.Mission>
+                      ) : (
+                        <M.PlusMission key={mission.id}>
+                          {mission.text}
+                          <M.DBtn onClick={() => handleMissionDelete(mission.id)}>-</M.DBtn>
+                        </M.PlusMission>
+                      )
+                    )}
                   </M.Missions>
                   <M.MBtn onClick={openModal}>+</M.MBtn>
                 </M.MissionList>
