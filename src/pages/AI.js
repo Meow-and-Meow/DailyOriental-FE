@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import * as C from "../styles/CommonStyle";
 import * as A from "../styles/AIStyle";
 import { CallGPT } from "../utils/gpt";
@@ -14,6 +15,7 @@ function AI() {
     const [selectedType, setSelectedType] = useState("");
     const [inputValue, setInputValue] = useState("");
     const [answer, setAnswer] = useState("");
+    const navigate = useNavigate();
 
     const handleTypeClick = (type, text) => {
         if (selectedType === type) {
@@ -68,6 +70,13 @@ function AI() {
                 setAnswer("문제가 발생했습니다. 다시 시도해 주세요.");
             });
     };
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if (!token) {
+            navigate("/join");
+        }
+    }, []);
 
     return (
         <>
