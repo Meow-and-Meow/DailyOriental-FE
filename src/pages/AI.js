@@ -145,6 +145,7 @@ function AI() {
                                     <A.tip_text> ∙ 치명적인 병을 알려줘</A.tip_text>
                                     <A.tip_text> ∙ 조심해야하는 생활습관을 알려줘</A.tip_text>
                                 </A.tip>
+                                햐
                                 <A.answer>
                                     <A.polygon>
                                         <img src={polygon} alt="말풍선"></img>
