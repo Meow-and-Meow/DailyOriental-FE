@@ -64,9 +64,9 @@ export const ModalContent = styled.div`
 `;
 
 export const ModalText = styled.div`
-    font-size: 12px;
+    font-size: 15px;
     font-weight: 600;
-    line-height: 14.32px;
+    line-height: 17.9px;
     text-align: center;
     margin-top: 25px;
     color: #f5f5f5;
@@ -86,9 +86,9 @@ export const CloseBtn = styled.div`
     color: #f5f5f5;
     cursor: pointer;
 
-    font-size: 12px;
+    font-size: 15px;
     font-weight: 600;
-    line-height: 14.32px;
+    line-height: 17.9px;
     text-align: center;
 
     display: flex;

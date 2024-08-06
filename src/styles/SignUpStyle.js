@@ -16,13 +16,12 @@ export const sub_background = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 360px;
-    height: 738px;
+    width: 100%;
+    height: 100vh;
     background-color: #f5f5f5;
     border-radius: 15rem 0 0 0;
     box-shadow: inset 7px -8px 4px rgba(0, 0, 0, 0.15);
-    position: absolute;
-    top: 0;
+    margin-top: -5rem;
 `;
 
 export const title = styled.div`
