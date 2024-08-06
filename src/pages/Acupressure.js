@@ -46,7 +46,7 @@ function Acupressure() {
 
     // 상태 관리: 처음에는 Hand와 btnHand로 설정
     const [currentImage, setCurrentImage] = useState(Hand);
-    const [currentBtnImage, setCurrentBtnImage] = useState(btnHand);
+    const [currentBtnImage, setCurrentBtnImage] = useState(btnFoot);
     const [buttonLabels, setButtonLabels] = useState([
         "발바닥",
         "간",
@@ -224,8 +224,18 @@ function Acupressure() {
                                             </div>
                                         </div>
                                     </div>
-                                    <A.SelectionsBtns>
-                                        <div className="scroll">
+                                    <A.SelectionsBtns
+                                        style={{
+                                            display: "flex",
+                                            justifyContent: "center",
+                                        }}
+                                    >
+                                        <div
+                                            className="scroll"
+                                            style={{
+                                                margin: "6px",
+                                            }}
+                                        >
                                             {buttonLabels
                                                 .reduce(
                                                     (
@@ -255,7 +265,8 @@ function Acupressure() {
                                                             <div
                                                                 key={item}
                                                                 style={{
-                                                                    margin: "5px",
+                                                                    marginBottom:
+                                                                        "3px",
                                                                 }}
                                                             >
                                                                 <SelectableButton
@@ -279,10 +290,6 @@ function Acupressure() {
                                                         key={index}
                                                         style={{
                                                             display: "flex",
-                                                            justifyContent:
-                                                                "space-between",
-                                                            marginBottom:
-                                                                "10px",
                                                         }}
                                                     >
                                                         {chunk}
@@ -291,54 +298,80 @@ function Acupressure() {
                                         </div>
                                     </A.SelectionsBtns>
                                 </A.Selection>
-                                <A.Bottom>
-                                    <A.Show style={{ position: "relative" }}>
-                                        <img
-                                            src={currentImage}
-                                            style={{
-                                                cursor: "pointer",
-                                                width: "100%",
-                                                height: "100%",
-                                            }}
-                                        />
-                                        {Object.entries(visibleImages).map(
-                                            ([label, imageSrc]) =>
-                                                imageSrc && (
-                                                    <img
-                                                        key={label}
-                                                        src={imageSrc}
-                                                        style={{
-                                                            position:
-                                                                "absolute",
-                                                            top: 0,
-                                                            left: 0,
-                                                            width: "100%",
-                                                            height: "100%",
-                                                            pointerEvents:
-                                                                "none",
-                                                        }}
-                                                    />
-                                                )
-                                        )}
+                                <div style={{}}>
+                                    <A.Bottom>
                                         <div
                                             style={{
-                                                position: "absolute",
-                                                bottom: "0px",
-                                                right: "25px",
+                                                display: "flex",
+                                                justifyContent: "center",
+                                                alignItems: "center",
+                                                height: "500px",
+                                                width: "85%",
+                                                marginBottom: "10%",
                                             }}
                                         >
-                                            <img
-                                                src={currentBtnImage}
-                                                onClick={handleImageChange}
+                                            <A.Show
                                                 style={{
-                                                    cursor: "pointer",
-                                                    width: "50px",
-                                                    height: "50px",
+                                                    position: "relative",
+                                                    width: "100%",
+                                                    height: "100%",
+                                                    display: "flex",
+                                                    justifyContent: "center",
+                                                    alignItems: "center",
                                                 }}
-                                            />
+                                            >
+                                                <img
+                                                    src={currentImage}
+                                                    style={{
+                                                        cursor: "pointer",
+                                                        width: "100%",
+                                                        height: "100%",
+                                                    }}
+                                                />
+                                                {Object.entries(
+                                                    visibleImages
+                                                ).map(
+                                                    ([label, imageSrc]) =>
+                                                        imageSrc && (
+                                                            <img
+                                                                key={label}
+                                                                src={imageSrc}
+                                                                style={{
+                                                                    position:
+                                                                        "absolute",
+                                                                    top: 0,
+                                                                    left: 0,
+                                                                    width: "100%",
+                                                                    height: "100%",
+                                                                    pointerEvents:
+                                                                        "none",
+                                                                }}
+                                                            />
+                                                        )
+                                                )}
+                                                <div
+                                                    style={{
+                                                        position: "absolute",
+                                                        bottom: "0px",
+                                                        right: "10px",
+                                                    }}
+                                                >
+                                                    <img
+                                                        src={currentBtnImage}
+                                                        onClick={
+                                                            handleImageChange
+                                                        }
+                                                        style={{
+                                                            cursor: "pointer",
+                                                            width: "70px",
+                                                            height: "70px",
+                                                        }}
+                                                    />
+                                                </div>
+                                            </A.Show>
                                         </div>
-                                    </A.Show>
-                                </A.Bottom>
+                                    </A.Bottom>
+                                </div>
                             </A.Acupressure>
                         </C.PageSpace>
                     </A.Background>

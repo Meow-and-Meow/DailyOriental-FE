@@ -28,7 +28,6 @@ export const SelectionsBtns = styled.div`
     .scroll {
         max-height: 150px; /* 최대 높이 설정 */
         overflow-y: scroll; /* 스크롤 활성화 */
-
         box-sizing: border-box;
     }
 
