@@ -291,7 +291,7 @@ function Test() {
             const token = localStorage.getItem("token"); // 로컬 스토리지에서 토큰 가져오기
 
             if (!token) {
-                alert("토큰이 존재하지 않습니다. 로그인 후 다시 시도해주세요.");
+                alert("로그인 후 다시 시도해주세요.");
                 return;
             }
 
@@ -319,6 +319,9 @@ function Test() {
 
     const toggleModal = () => {
         setIsModalOpen(!isModalOpen);
+    };
+    const moveMain = () => {
+        navigate("/main"); // 원하는 경로로 변경하세요.
     };
 
     const copyToClipboard = () => {
@@ -389,6 +392,9 @@ function Test() {
                                                 justifyContent: "center",
                                                 alignItems: "center",
                                                 top: "4px",
+                                                zIndex: "1",
+                                                position: "relative", // 위치 조정을 위해 relative로 설정
+                                                zIndex: "1",
                                             }}
                                         />
                                         <img
@@ -399,6 +405,9 @@ function Test() {
                                                 display: "flex",
                                                 justifyContent: "center",
                                                 alignItems: "center",
+                                                position: "relative", // 위치 조정을 위해 relative로 설정
+                                                zIndex: "2",
+                                                marginTop: "-10px", // 위 이미지와 10px 겹치도록 설정
                                             }}
                                         />
                                     </T.ImgTitle>
@@ -441,6 +450,9 @@ function Test() {
                                                 </T.Button>
                                                 <T.Button onClick={toggleModal}>
                                                     결과 공유하기
+                                                </T.Button>
+                                                <T.Button onClick={moveMain}>
+                                                    메인 페이지로 이동
                                                 </T.Button>
                                             </T.ButtonContainer>
                                         </div>
