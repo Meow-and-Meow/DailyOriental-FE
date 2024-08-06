@@ -84,25 +84,7 @@ function Join() {
                                         </J.btn>
                                     </J.login>
                                     <J.line></J.line>
-                                    <J.easy_login>
-                                        <J.login_title>간편 로그인</J.login_title>
-                                        <J.btn style={{ backgroundColor: "#FDDC3F" }}>
-                                            <img
-                                                src={kakao}
-                                                style={{ width: "29px", height: "29px", marginRight: "10px" }}
-                                                alt="카카오 로그인"
-                                            ></img>
-                                            카카오로 시작하기
-                                        </J.btn>
-                                        <J.btn style={{ backgroundColor: "#27D34A" }}>
-                                            <img
-                                                src={naver}
-                                                style={{ width: "22px", height: "22px", marginRight: "17px" }}
-                                                alt="네이버 로그인"
-                                            ></img>
-                                            네이버로 시작하기
-                                        </J.btn>
-                                    </J.easy_login>
+
                                     <J.other_func>
                                         <J.content onClick={handleSignup}>회원가입</J.content>
                                     </J.other_func>
