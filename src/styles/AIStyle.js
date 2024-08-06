@@ -160,7 +160,7 @@ export const polygon = styled.div`
     height: 27.39px;
     position: absolute;
     margin-left: 5rem;
-    top: 388px;
+    top: 24.1rem;
 `;
 
 export const answer_container = styled.div`
