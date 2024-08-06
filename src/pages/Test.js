@@ -307,7 +307,6 @@ function Test() {
             );
 
             console.log("Server response:", response.data);
-            navigate("/main"); // 원하는 경로로 변경하세요.
         } catch (error) {
             console.error(
                 "Error submitting survey:",

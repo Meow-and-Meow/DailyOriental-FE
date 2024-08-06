@@ -29,11 +29,13 @@ export const Detail = styled.div`
         text-align: center;
         align-items: center;
         margin-bottom: 10%;
+        margin: 10px;
         font-size: 11px;
+        font-weight: 550;
     }
     .Detailelements {
         padding: 30px;
-        padding-top: 90px;
+        padding-top: 60px;
     }
     .Detailtitle {
         color: #79212f;
