@@ -36,8 +36,12 @@ function Test() {
                 return {
                     imageSrc: human1,
                     titleSrc: title1,
-                    introText:
-                        "태양인은 전체 사상체질 중 가장 수가 적어 구별하기 어렵다는 특징이 있어요",
+                    introText: (
+                        <>
+                            태양인은 전체 사상체질 중 가장 수가 적어 <br />
+                            구별하기 어렵다는 특징이 있어요
+                        </>
+                    ),
                     info1: (
                         <>
                             용모가 뚜렷하고 살이 비후하지 않다. <br />
@@ -73,8 +77,14 @@ function Test() {
                 return {
                     imageSrc: human2,
                     titleSrc: title2,
-                    introText:
-                        "소양인은 성격이 급하고 쉽게 화를 낼 수 있다는 특징이 있어요",
+                    introText: (
+                        <>
+                            소양인은 수가 많고
+                            <br />
+                            비교적 구별하기 쉽다는 특징이 있어요
+                        </>
+                    ),
+
                     info1: (
                         <>
                             용모가 뚜렷하고 살이 비후하지 않다 <br />
@@ -108,8 +118,13 @@ function Test() {
                 return {
                     imageSrc: human3,
                     titleSrc: title3,
-                    introText:
-                        "태음인은 체구가 크고 성격이 차분하다는 특징이 있어요",
+                    introText: (
+                        <>
+                            태음인은 한국인 중에서 <br />
+                            가장 많은 비율을 차지하는 사상체질입니다
+                        </>
+                    ),
+
                     info1: (
                         <>
                             용모가 뚜렷하고 살이 비후하지 않다
@@ -154,8 +169,13 @@ function Test() {
                 return {
                     imageSrc: human4,
                     titleSrc: title4,
-                    introText:
-                        "소음인은 체형이 균형적으로 발달하였고 한국인의 사상체질 중 3위에 속합니다",
+                    introText: (
+                        <>
+                            소음인은 체형이 균형적으로 발달하였고 <br />{" "}
+                            한국인의 사상체질 중 3위에 속합니다
+                        </>
+                    ),
+
                     info1: (
                         <>
                             상체보다 하체가 균형 있게 발달했으며 키가 작은
@@ -444,6 +464,7 @@ function Test() {
                         boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
                         zIndex: 10,
                         width: "80%",
+
                         maxWidth: "400px",
                     }}
                 >
@@ -452,12 +473,15 @@ function Test() {
                             display: "flex",
                             justifyContent: "space-between",
                             alignItems: "center",
+                            marginRight: "20px",
+                            marginLeft: "10px",
                         }}
                     >
                         <button
                             onClick={toggleModal}
                             style={{
                                 background: "none",
+                                color: "black",
                                 border: "none",
                                 fontSize: "20px",
                                 cursor: "pointer",
@@ -465,7 +489,7 @@ function Test() {
                         >
                             ×
                         </button>
-                        <h3>공유하기</h3>
+                        <div style={{ fontSize: "15px" }}>공유하기</div>
                         <div></div>
                     </div>
                     <div style={{ margin: "20px 0" }}>
@@ -482,7 +506,7 @@ function Test() {
                                 textAlign: "center",
                                 marginBottom: "10px",
                                 cursor: "pointer",
-                                fontSize: "16px",
+                                fontSize: "14px",
                                 color: "white",
                                 display: "flex",
                                 alignItems: "center",
@@ -500,7 +524,7 @@ function Test() {
                                     cursor: "pointer",
                                     fontSize: "10px",
                                     color: "white",
-                                    width: "13%",
+                                    width: "20%",
                                 }}
                             >
                                 복사
@@ -516,7 +540,7 @@ function Test() {
                                 border: "none",
                                 width: "100%",
                                 textAlign: "center",
-                                fontSize: "16px",
+                                fontSize: "14px",
                                 color: "white",
                                 display: "flex",
                                 alignItems: "center",
@@ -535,7 +559,7 @@ function Test() {
                                     cursor: "pointer",
                                     fontSize: "10px",
                                     color: "white",
-                                    width: "13%",
+                                    width: "20%",
                                 }}
                             >
                                 저장
