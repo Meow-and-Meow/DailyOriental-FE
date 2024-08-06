@@ -12,7 +12,6 @@ export const CallGPT = async (inputValue) => {
             max_tokens: 1000,
         }),
     });
-
     const responseData = await response.json();
     return responseData;
 };
