@@ -18,7 +18,7 @@ function SignUp() {
         phone: "",
         reason: "",
     });
-    const [errorMessage, setErrorMessage] = useState("");
+    const [errorMessage, setErrorMessage] = useState(null);
 
     const handleGenderClick = (gender) => {
         setSelectedGender((prev) => (prev === gender ? "" : gender));
@@ -42,9 +42,10 @@ function SignUp() {
         try {
             const response = await axios.post(`${process.env.REACT_APP_API}/accounts/register/`, formData);
             navigate("/join");
+            console.log(response.data);
         } catch (error) {
-            console.error("회원가입 에러:", error.response.data);
-            window.alert("회원가입에 실패했습니다.다시 시도해주세요.\n" + error.response.data.id);
+            console.error("회원가입 에러:", error.response.data.id);
+            setErrorMessage(error.response.data.id);
         }
     };
 
@@ -74,6 +75,7 @@ function SignUp() {
                                                 onChange={handleChange}
                                             ></S.input>
                                         </S.content>
+                                        {errorMessage && <S.error_message>{errorMessage}</S.error_message>}
                                         <S.content>
                                             <S.label>PW</S.label>
                                             <S.input
