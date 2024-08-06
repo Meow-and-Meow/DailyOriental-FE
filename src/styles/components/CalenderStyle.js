@@ -165,6 +165,6 @@ export const StyledDot = styled.div`
   height: 30px;
   position: absolute;
   top: 0;
-  left: 60%;
+  left: 55%;
   transform: translateX(-50%);
 `;

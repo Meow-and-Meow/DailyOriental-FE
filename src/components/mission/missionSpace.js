@@ -14,7 +14,7 @@ import exerciseBtnY from "../../img/Arch_exercise_red.png";
 import happinessBtnY from "../../img/Arch_happy_red.png";
 import dietBtnY from "../../img/Arch_meal_red.png";
 import check from "../../img/check_center.png";
-import list from "../../img/list.png";
+import list from "../../img/list_center.png";
 
 import mon from "../../img/day_Mon.png";
 import tue from "../../img/day_Tue.png";
@@ -35,8 +35,6 @@ import sunY from "../../img/day_Sun_check.png";
 function MissionSpace({ dateInfo, completedMissions, onMissionClick }) {
   const navigate = useNavigate();
   const [info, setInfo] = useState(dateInfo);
-
-  const token = localStorage.getItem("token");
 
   const handleNavLinkClick = (path) => {
     navigate(path);

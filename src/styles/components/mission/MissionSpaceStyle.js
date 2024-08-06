@@ -137,7 +137,8 @@ export const ToList = styled.div`
   cursor: pointer;
 
   img {
-    width: 90px;
+    width: 100px;
+    padding-left: 4px;
   }
 `;
 

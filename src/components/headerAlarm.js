@@ -41,11 +41,22 @@ function HeaderAlarm() {
     if (!token) return;
 
     try {
-      await axios.get(`${process.env.REACT_APP_API}/alarm/notifications/${id}/`, {
-        headers: {
-          Authorization: `Token ${token}`,
+      const notification = dropdownItems.find((item) => item.id === id);
+      if (!notification) return;
+
+      await axios.put(
+        `${process.env.REACT_APP_API}/alarm/notifications/${id}/`,
+        {
+          ...notification,
+          is_read: true,
         },
-      });
+        {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        }
+      );
+
       // fetchNotifications를 호출하여 상태를 최신화
       fetchNotifications();
     } catch (error) {
