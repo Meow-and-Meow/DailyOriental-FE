@@ -54,8 +54,8 @@ function SignUp() {
                     <S.Background>
                         <C.PageSpace>
                             <S.SignUp>
-                                <HeaderRegister />
                                 <S.sub_background>
+                                    <HeaderRegister />
                                     <S.title>
                                         <S.logo_title>
                                             <img src={logo} style={{ width: "124px" }} alt="매일한방"></img>
