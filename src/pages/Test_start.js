@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import * as C from "../styles/CommonStyle";
 import * as T from "../styles/TestStartStyle";
 import navbar from "../img/back_w.png";
-
+import Header from "../components/header";
 import { useNavigate } from "react-router-dom";
 
 function Test_start() {
     const navigate = useNavigate(); // useNavigate 훅을 사용하여 navigate 함수를 가져옵니다.
-
+    const mainTitle = "사상체질 자가진단";
+    const subTitle = "태양인/소양인/태음인/소음인";
     const handleClick = () => {
         navigate("/testIng"); // "/test-ing" 경로로 이동합니다.
     };
@@ -18,25 +19,10 @@ function Test_start() {
                     <C.PageSpace>
                         <T.Test>
                             <T.Nav>
-                                <img
-                                    src={navbar}
-                                    alt="Navbar"
-                                    onClick={() => navigate(-1)} // 이전 페이지로 이동
-                                    style={{
-                                        width: "18px",
-                                        height: "18px",
-                                        cursor: "pointer",
-                                    }}
+                                <Header
+                                    mainTitle={mainTitle}
+                                    subTitle={subTitle}
                                 />
-                                <div className="Title">
-                                    <div className="TopTitle">
-                                        사상체질 자가진단
-                                    </div>
-                                    <div className="TitleInfo">
-                                        태양인/소양인/태음인/소음인
-                                    </div>
-                                </div>
-                                <div></div>
                             </T.Nav>
                             <T.Adver>
                                 <div className="AdvText">

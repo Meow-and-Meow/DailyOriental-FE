@@ -7,12 +7,15 @@ import axios from "axios";
 import human1 from "../img/human_1.png";
 import human2 from "../img/human_2.png";
 import human3 from "../img/human_3.png";
+import human4 from "../img/human_4.png";
 import title1 from "../img/title_1.png";
 import title2 from "../img/title_2.png";
 import title3 from "../img/title_3.png";
+import title4 from "../img/title_4.png";
 import humanR1 from "../img/result1.png";
 import humanR2 from "../img/result2.png";
 import humanR3 from "../img/result3.png";
+import humanR4 from "../img/result4.png";
 import Header from "../components/header";
 
 function Test() {
@@ -147,6 +150,53 @@ function Test() {
                         </>
                     ),
                 };
+            case 4:
+                return {
+                    imageSrc: human4,
+                    titleSrc: title4,
+                    introText:
+                        "소음인은 체형이 균형적으로 발달하였고 한국인의 사상체질 중 3위에 속합니다",
+                    info1: (
+                        <>
+                            상체보다 하체가 균형 있게 발달했으며 키가 작은
+                            편입니다 <br />
+                            약하고 마른 체형이 많습니다 <br />
+                            엉덩이가 발달되어 있고 가슴 부위가 약합니다 <br />
+                            앞으로 수그린 자세로 걷는 사람이 많습니다 <br />
+                        </>
+                    ),
+                    info2: (
+                        <>
+                            유순하고 침착하지만 질투심이 많습니다
+                            <br />
+                            세심하고 부드러워 사람들을 잘 조직하는 능력이
+                            있습니다
+                            <br />
+                            자주 불안함을 느끼는 편이며 작은 일에도 걱정이
+                            많습니다
+                            <br />
+                            내성적이고 여성적인 편이지만 소극적이고 추진력이
+                            약한 편입니다
+                            <br />
+                            이해타산에 자주 얽매이고 남의 간섭을 싫어합니다
+                            <br />
+                        </>
+                    ),
+                    info3: (
+                        <>
+                            신장의 기능이 좋고 비위의 기능이 약합니다
+                            <br />
+                            음식의 소화를 잘해야 건강합니다
+                            <br />
+                            땀이 많이 나오면 큰 병일 수 있습니다
+                            <br />
+                            설사가 멎지 않으면서 아랫배가 자주 차갑습니다
+                            <br />
+                            위장병으로 고생하는 사람이 많습니다
+                            <br />
+                        </>
+                    ),
+                };
             default:
                 return {
                     imageSrc: human1,
@@ -272,6 +322,7 @@ function Test() {
         1: humanR1,
         2: humanR2,
         3: humanR3,
+        4: humanR4,
     };
     // 이미지 다운로드 함수
     const saveImage = async () => {
