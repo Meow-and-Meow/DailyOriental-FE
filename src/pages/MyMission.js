@@ -124,6 +124,10 @@ function MyMission() {
     }
   };
 
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <>
       <C.Page>

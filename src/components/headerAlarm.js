@@ -74,6 +74,10 @@ function HeaderAlarm() {
     return () => clearInterval(intervalId);
   }, []);
 
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <>
       <H.Header>

@@ -104,6 +104,10 @@ function Member() {
     }, 400);
   };
 
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <>
       <M.container style={{ marginTop: "40px" }}>

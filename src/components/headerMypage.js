@@ -40,6 +40,10 @@ function HeaderMypage() {
     }
   }, []);
 
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <>
       <H.Header>
