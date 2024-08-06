@@ -30,6 +30,7 @@ export const Nav = styled.div`
     .TitleInfo {
         color: #f7db8d;
         font-size: 9px;
+        margin-top: 12px;
     }
 `;
 
