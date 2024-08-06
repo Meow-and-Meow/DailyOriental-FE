@@ -17,7 +17,7 @@ function MainBox({ category }) {
   let title, content, imgSrc;
 
   switch (category) {
-    case "test":
+    case "testStart":
       title = `사상체질을 진단해보고\n나에게 딱 맞는 건강관리법을 알아보세요`;
       content = "사상체질 자가진단 하러가기";
       imgSrc = test;

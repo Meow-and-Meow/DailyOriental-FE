@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import * as C from "../styles/CommonStyle";
 import * as M from "../styles/MyMissionStyle";
 
@@ -21,9 +22,46 @@ function MyMission() {
 
   const [selectedCategory, setSelectedCategory] = useState("기분");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [missions, setMissions] = useState([]);
+
+  useEffect(() => {
+    fetchMissions(selectedCategory);
+  }, [selectedCategory]);
+
+  const fetchMissions = async (category) => {
+    const token = localStorage.getItem("token");
+    const apiCategory = getCategoryApiName(category);
+
+    try {
+      console.log(apiCategory);
+      const response = await axios.get(`${process.env.REACT_APP_API}/habits/category/${apiCategory}/`, {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      });
+      setMissions(response.data);
+    } catch (error) {
+      console.error(`${category} 카테고리의 미션을 불러오는데 실패했습니다:`, error);
+    }
+  };
 
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
+  };
+
+  const getCategoryApiName = (category) => {
+    switch (category) {
+      case "기분":
+        return "mood";
+      case "운동":
+        return "exercise";
+      case "행복":
+        return "happiness";
+      case "식습관":
+        return "diet";
+      default:
+        return "mood";
+    }
   };
 
   const getCategoryImage = (category) => {
@@ -60,8 +98,25 @@ function MyMission() {
     setIsModalOpen(true);
   };
 
-  const closeModal = () => {
+  const closeModal = (refresh) => {
     setIsModalOpen(false);
+    if (refresh) {
+      fetchMissions(selectedCategory); // 새 미션 추가 후 목록 새로 고침
+    }
+  };
+
+  const handleMissionDelete = async (id) => {
+    const token = localStorage.getItem("token");
+    try {
+      await axios.delete(`${process.env.REACT_APP_API}/habits/${id}/`, {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      });
+      fetchMissions(selectedCategory); // 미션 삭제 후 목록 새로 고침
+    } catch (error) {
+      console.error("미션 삭제 실패:", error);
+    }
   };
 
   return (
@@ -93,19 +148,16 @@ function MyMission() {
                 <M.CategoryTitle>{getCategoryTitle()}</M.CategoryTitle>
                 <M.MissionList>
                   <M.Missions>
-                    <M.Mission>10분 동안 명상하기</M.Mission>
-                    <M.Mission>감사한 일 3가지 적어보기</M.Mission>
-                    <M.Mission>좋아하는 노래 3곡 듣기</M.Mission>
-                    <M.Mission>10분 동안 하늘 쳐다보기</M.Mission>
-                    <M.Mission>가까운 친구와 가족에게 안부 메시지 보내기</M.Mission>
-                    <M.PlusMission>
-                      자화상 그려보기
-                      <M.DBtn>-</M.DBtn>
-                    </M.PlusMission>
+                    {missions.map((mission) => (
+                      <M.PlusMission key={mission.id}>
+                        {mission.text}
+                        <M.DBtn onClick={() => handleMissionDelete(mission.id)}>-</M.DBtn>
+                      </M.PlusMission>
+                    ))}
                   </M.Missions>
                   <M.MBtn onClick={openModal}>+</M.MBtn>
                 </M.MissionList>
-                {isModalOpen && <ModalMission onClose={closeModal} />}
+                {isModalOpen && <ModalMission onClose={closeModal} selectedCategory={selectedCategory} />}
               </M.MyMission>
             </C.PageSpace>
           </M.Background>
