@@ -46,7 +46,7 @@ function Acupressure() {
 
     // 상태 관리: 처음에는 Hand와 btnHand로 설정
     const [currentImage, setCurrentImage] = useState(Hand);
-    const [currentBtnImage, setCurrentBtnImage] = useState(btnHand);
+    const [currentBtnImage, setCurrentBtnImage] = useState(btnFoot);
     const [buttonLabels, setButtonLabels] = useState([
         "발바닥",
         "간",
