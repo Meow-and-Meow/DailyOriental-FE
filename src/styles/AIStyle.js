@@ -142,7 +142,7 @@ export const answer = styled.div`
     flex-direction: column;
     box-sizing: border-box;
     width: 360px;
-    height: 450px;
+    height: 70vh;
     margin-top: 77px;
 `;
 
@@ -167,7 +167,7 @@ export const answer_container = styled.div`
     display: flex;
     flex-direction: column;
     width: 360px;
-    height: 100%;
+    height: 100vh;
     box-sizing: border-box;
     border-radius: 20px 20px 0 0;
     background-color: #f5f5f5;
@@ -180,22 +180,26 @@ export const answer_text = styled.div`
     font-weight: 600;
     font-size: 15px;
     line-height: 17.9px;
-    max-height: 340px;
-    overflow-y: scroll;
     padding-right: 27px;
     padding-top: 17px;
+    max-height: 340px;
+    overflow-y: scroll;
 
-    &::-webkit-scrollbar {
-        width: 10px;
+
+    ::-webkit-scrollbar {
+        width: 10px; /* 스크롤바의 너비 */
     }
 
-    &::-webkit-scrollbar-thumb {
-        background: #79212f;
-        border-radius: 10px;
+    ::-webkit-scrollbar-track {
+        background: #d9d9d9; /* 스크롤바 트랙의 배경 색상 */
+        border-radius: 10px; /* 스크롤바 트랙의 둥근 모서리 */
     }
 
-    &::-webkit-scrollbar-track {
-        background: #d9d9d9;
-        border-radius: 10px;
     }
+    ::-webkit-scrollbar-thumb {
+        background-color: #79212f; /* 스크롤바 핸들의 기본 색상 */
+        border-radius: 10px; /* 스크롤바 핸들의 둥근 모서리 */
+        border: 3px solid #d9d9d9; /* 스크롤바 핸들의 테두리 (트랙과의 간격) */
+    }
+
 `;
