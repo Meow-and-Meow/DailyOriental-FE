@@ -19,11 +19,15 @@ function AI() {
 
     const handleTypeClick = (type, text) => {
         if (selectedType === type) {
+            // 선택한 타입을 해제할 경우
             setSelectedType("");
-            setInputValue(inputValue.replace(text, "").trim());
+            setInputValue(inputValue.replace(getTypeText(type), "").trim());
         } else {
+            // 새로운 타입이 선택된 경우
             setSelectedType(type);
+            // 이전 선택된 타입의 텍스트 제거
             const newValue = inputValue.replace(getTypeText(selectedType), "").trim();
+            // 새로운 타입 텍스트를 추가
             setInputValue(`${text} ${newValue}`.trim());
         }
     };
@@ -31,9 +35,12 @@ function AI() {
     const handleChange = (e) => {
         const newValue = e.target.value;
         const typeText = getTypeText(selectedType);
+
         if (newValue.startsWith(typeText)) {
+            // 입력값이 타입 텍스트로 시작할 경우
             setInputValue(newValue);
         } else {
+            // 타입 텍스트를 추가
             setInputValue(`${typeText} ${newValue}`.trim());
         }
     };
@@ -47,13 +54,13 @@ function AI() {
     const getTypeText = (type) => {
         switch (type) {
             case "text1":
-                return "태양인";
+                return "태양인의 한의학적";
             case "text2":
-                return "소양인";
+                return "소양인의 한의학적";
             case "text3":
-                return "태음인";
+                return "태음인의 한의학적";
             case "text4":
-                return "소음인";
+                return "소음인의 한의학적";
             default:
                 return "";
         }
@@ -92,28 +99,28 @@ function AI() {
                                         <A.btn
                                             value="text1"
                                             selected={selectedType === "text1"}
-                                            onClick={() => handleTypeClick("text1", "태양인")}
+                                            onClick={() => handleTypeClick("text1", "태양인의 한의학적")}
                                         >
                                             태양인
                                         </A.btn>
                                         <A.btn
                                             value="text2"
                                             selected={selectedType === "text2"}
-                                            onClick={() => handleTypeClick("text2", "소양인")}
+                                            onClick={() => handleTypeClick("text2", "소양인의 한의학적")}
                                         >
                                             소양인
                                         </A.btn>
                                         <A.btn
                                             value="text3"
                                             selected={selectedType === "text3"}
-                                            onClick={() => handleTypeClick("text3", "태음인")}
+                                            onClick={() => handleTypeClick("text3", "태음인의 한의학적")}
                                         >
                                             태음인
                                         </A.btn>
                                         <A.btn
                                             value="text4"
                                             selected={selectedType === "text4"}
-                                            onClick={() => handleTypeClick("text4", "소음인")}
+                                            onClick={() => handleTypeClick("text4", "소음인의 한의학적")}
                                         >
                                             소음인
                                         </A.btn>

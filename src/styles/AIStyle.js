@@ -176,7 +176,7 @@ export const answer_container = styled.div`
 `;
 
 export const answer_text = styled.div`
-    color: #28272A;
+    color: rgba(0,0,0,0.25);
     font-weight: 600;
     font-size: 15px;
     line-height: 21px;
