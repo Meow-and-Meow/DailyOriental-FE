@@ -34,6 +34,7 @@ function MyMission() {
   const fetchMissions = async (category) => {
     const token = localStorage.getItem("token");
     const apiCategory = getCategoryApiName(category);
+    setLoading(true);
 
     try {
       console.log(apiCategory);

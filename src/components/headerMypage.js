@@ -22,6 +22,7 @@ function HeaderMypage() {
     const id = localStorage.getItem("user_id");
     if (token) {
       const fetchUserData = async () => {
+        setLoading(true);
         try {
           const response = await axios.get(`${process.env.REACT_APP_API}/accounts/user/${id}/`, {
             headers: {

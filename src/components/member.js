@@ -21,6 +21,7 @@ function Member() {
   useEffect(() => {
     const token = localStorage.getItem("token");
     const id = localStorage.getItem("user_id");
+    setLoading(true);
     if (token) {
       const fetchUserData = async () => {
         try {

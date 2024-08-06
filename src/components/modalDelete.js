@@ -12,6 +12,7 @@ const ModalDelete = ({ onClose, isModalVisible3 }) => {
     const token = localStorage.getItem("token");
     const id = localStorage.getItem("user_id");
     const deleteUserData = async () => {
+      setLoading(true);
       try {
         await axios.delete(`${process.env.REACT_APP_API}/accounts/user/${id}/`, {
           headers: {

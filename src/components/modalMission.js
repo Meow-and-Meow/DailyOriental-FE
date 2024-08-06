@@ -27,6 +27,7 @@ const ModalMission = ({ onClose, selectedCategory }) => {
       식습관: "diet",
     };
     const apiCategory = categoryMap[selectedCategory];
+    setLoading(true);
 
     try {
       await axios.post(
