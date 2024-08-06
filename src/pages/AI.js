@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import * as C from "../styles/CommonStyle";
 import * as A from "../styles/AIStyle";
+import { CallGPT } from "../utils/gpt";
 
 import Header from "../components/header";
 import search from "../img/icon_search.png";
@@ -13,29 +13,29 @@ function AI() {
     const mainTitle = "사상체질 건강관리";
     const subTitle = "AI 허준과 함께하는 매일 한방";
     const [selectedType, setSelectedType] = useState("");
-    const [inputValue, setInputValue] = useState({ message: "" });
+    const [inputValue, setInputValue] = useState("");
     const [answer, setAnswer] = useState("");
     const navigate = useNavigate();
 
     const handleTypeClick = (type, text) => {
         if (selectedType === type) {
             setSelectedType("");
-            setInputValue((prev) => ({ ...prev, message: prev.message.replace(text, "").trim() }));
+            setInputValue(inputValue.replace(text, "").trim());
         } else {
             setSelectedType(type);
-            const newValue = inputValue.message.replace(getTypeText(selectedType), "").trim();
-            setInputValue({ ...inputValue, message: `${text} ${newValue}`.trim() });
+            const newValue = inputValue.replace(getTypeText(selectedType), "").trim();
+            setInputValue(`${text} ${newValue}`.trim());
         }
     };
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
+        const newValue = e.target.value;
         const typeText = getTypeText(selectedType);
-        const newMessage = value.startsWith(typeText) ? value : `${typeText} ${value}`.trim();
-        setInputValue({
-            ...inputValue,
-            [name]: newMessage,
-        });
+        if (newValue.startsWith(typeText)) {
+            setInputValue(newValue);
+        } else {
+            setInputValue(`${typeText} ${newValue}`.trim());
+        }
     };
 
     const handleKeyPress = (e) => {
@@ -60,54 +60,21 @@ function AI() {
     };
 
     const handleSubmit = () => {
-        const token = localStorage.getItem("token");
-        const id = localStorage.getItem("user_id");
-        if (token) {
-            const fetchUserData = async () => {
-                try {
-                    console.log("Submitting data:", inputValue);
-                    const response = await axios.post(`${process.env.REACT_APP_API}/chat/${id}/`, inputValue, {
-                        headers: {
-                            Authorization: `Token ${token}`,
-                            "Content-Type": "application/json",
-                        },
-                    });
-                    console.log(response.data);
-                } catch (error) {
-                    console.error("입력 정보를 전달하는데 실패했습니다:", error);
-                }
-            };
-
-            fetchUserData();
-        }
+        CallGPT(inputValue)
+            .then((response) => {
+                console.log("Response from GPT:", response);
+                setAnswer(response.choices[0].message.content);
+            })
+            .catch((error) => {
+                console.error("Error calling GPT:", error);
+                setAnswer("문제가 발생했습니다. 다시 시도해 주세요.");
+            });
     };
 
     useEffect(() => {
         const token = localStorage.getItem("token");
         if (!token) {
             navigate("/join");
-        }
-    }, []);
-
-    useEffect(() => {
-        const token = localStorage.getItem("token");
-        const id = localStorage.getItem("user_id");
-        if (token) {
-            const fetchChatData = async () => {
-                try {
-                    const chatAnswer = await axios.get(`${process.env.REACT_APP_API}/chat/${id}/assistant_messages/`, {
-                        headers: {
-                            Authorization: `Token ${token}`,
-                        },
-                    });
-                    setAnswer(chatAnswer.data);
-                    console.log("답: ", chatAnswer.data);
-                } catch (error) {
-                    console.error("답변을 불러오는데 실패했습니다:", error);
-                }
-            };
-
-            fetchChatData();
         }
     }, []);
 
@@ -164,8 +131,8 @@ function AI() {
                                     <A.input
                                         placeholder="이곳을 눌러서 검색하세요"
                                         type="text"
-                                        name="message"
-                                        value={inputValue.message}
+                                        name="a"
+                                        value={inputValue}
                                         onChange={handleChange}
                                         onKeyPress={handleKeyPress}
                                     ></A.input>
@@ -187,19 +154,10 @@ function AI() {
                                         <img src={doctor} alt="AI 허준"></img>
                                     </A.doctor>
                                     <A.answer_container>
-                                        {answer.content ? (
-                                            <A.answer_text>
-                                                {answer.content.split("\n").map((line, index) => {
-                                                    <React.Fragment key={index}>
-                                                        {line}
-                                                        <br />
-                                                    </React.Fragment>;
-                                                })}
-                                            </A.answer_text>
+                                        {answer ? (
+                                            <A.answer_text style={{ color: "#28272A" }}>{answer}</A.answer_text>
                                         ) : (
-                                            <A.answer_text style={{ color: "rgba(0, 0, 0, 0.25)" }}>
-                                                검색창을 통해 AI 허준에게 질문해보세요
-                                            </A.answer_text>
+                                            <A.answer_text>검색창을 통해 AI 허준에게 질문해보세요</A.answer_text>
                                         )}
                                     </A.answer_container>
                                 </A.answer>
