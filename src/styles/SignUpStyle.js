@@ -17,7 +17,7 @@ export const sub_background = styled.div`
     align-items: center;
     flex-direction: column;
     width: 360px;
-    height: 100vh;
+    height: 738px;
     background-color: #f5f5f5;
     border-radius: 15rem 0 0 0;
     box-shadow: inset 7px -8px 4px rgba(0, 0, 0, 0.15);
