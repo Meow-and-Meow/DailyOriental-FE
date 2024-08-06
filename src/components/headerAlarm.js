@@ -24,7 +24,7 @@ function HeaderAlarm() {
 
   const fetchNotifications = async () => {
     const token = localStorage.getItem("token");
-    setLoading(true);
+    // setLoading(true);
 
     if (!token) {
       return;
@@ -53,7 +53,7 @@ function HeaderAlarm() {
       console.error("토큰이 없습니다.");
       return;
     }
-    setLoading(true);
+    // setLoading(true);
 
     try {
       await axios.delete(`${process.env.REACT_APP_API}/alarm/notifications/${id}/`, {

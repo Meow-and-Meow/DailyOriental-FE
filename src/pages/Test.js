@@ -278,7 +278,7 @@ function Test() {
       survey_result: surveyResultText,
     };
 
-    setLoading(true);
+    // setLoading(true);
 
     try {
       const token = localStorage.getItem("token"); // 로컬 스토리지에서 토큰 가져오기

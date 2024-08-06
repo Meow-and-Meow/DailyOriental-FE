@@ -41,7 +41,7 @@ function SignUp() {
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
+    // setLoading(true);
     try {
       const response = await axios.post(`${process.env.REACT_APP_API}/accounts/register/`, formData);
       navigate("/join");

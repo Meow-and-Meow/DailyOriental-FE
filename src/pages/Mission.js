@@ -27,7 +27,7 @@ function Mission() {
     const token = localStorage.getItem("token");
     if (token) {
       const fetchData = async () => {
-        setLoading(true);
+        // setLoading(true);
         try {
           const todayDate = getTodayDate();
           const storedDate = localStorage.getItem("date");
@@ -62,7 +62,7 @@ function Mission() {
       };
 
       const fetchCompletedMissions = async () => {
-        setLoading(true);
+        // setLoading(true);
         try {
           const response = await axios.get(`${process.env.REACT_APP_API}/missions/`, {
             headers: {
@@ -99,7 +99,7 @@ function Mission() {
       [field]: !prevInfo[field],
     }));
 
-    setLoading(true);
+    // setLoading(true);
     try {
       await axios.patch(
         `${process.env.REACT_APP_API}/missions/${todayDate}/`,
@@ -113,7 +113,7 @@ function Mission() {
 
       // 미션이 업데이트된 후, completedMissions도 다시 가져와서 업데이트
       const fetchCompletedMissions = async () => {
-        setLoading(true);
+        // setLoading(true);
         try {
           const response = await axios.get(`${process.env.REACT_APP_API}/missions/`, {
             headers: {
@@ -129,7 +129,7 @@ function Mission() {
       };
 
       const fetchData = async () => {
-        setLoading(true);
+        // setLoading(true);
         try {
           // 날짜 조회 API 호출
           const fetchResponse = await axios.get(`${process.env.REACT_APP_API}/missions/${todayDate}/`, {
