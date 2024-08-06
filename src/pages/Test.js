@@ -16,6 +16,7 @@ import humanR1 from "../img/result1.png";
 import humanR2 from "../img/result2.png";
 import humanR3 from "../img/result3.png";
 import humanR4 from "../img/result4.png";
+import navbar from "../img/back_r.png";
 import Header from "../components/header";
 
 function Test() {
@@ -23,7 +24,9 @@ function Test() {
     const subTitle = "태양인/소양인/태음인/소음인";
 
     const location = useLocation();
-    const { type } = location.state || { type: 3 };
+    const queryParams = new URLSearchParams(location.search);
+    const initialType = parseInt(queryParams.get("type")) || 3;
+    const [type, setType] = useState(initialType);
     const navigate = useNavigate();
 
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -292,6 +295,7 @@ function Test() {
 
             if (!token) {
                 alert("로그인 후 다시 시도해주세요.");
+                navigate("/join"); // 로그인 페이지로 리다이렉트
                 return;
             }
 
@@ -312,7 +316,9 @@ function Test() {
                 "Error submitting survey:",
                 error.response ? error.response.data : error.message
             );
-            alert("An error occurred while submitting the survey.");
+            alert("로그인 후 다시 시도해주세요.");
+            navigate("/join"); // 로그인 페이지로 리다이렉트
+            return;
         }
     };
 
@@ -321,6 +327,10 @@ function Test() {
     };
     const moveMain = () => {
         navigate("/main"); // 원하는 경로로 변경하세요.
+    };
+
+    const moveBack = () => {
+        navigate("/Testing"); // 원하는 경로로 변경하세요.
     };
 
     const copyToClipboard = () => {
@@ -377,10 +387,18 @@ function Test() {
                         <T.Background>
                             <C.PageSpace>
                                 <T.Test>
-                                    <Header
-                                        mainTitle={mainTitle}
-                                        subTitle={subTitle}
-                                    />
+                                    <div className="Navstyle">
+                                        <div>
+                                            <img
+                                                src={navbar}
+                                                style={{
+                                                    width: "12px",
+                                                    height: "20.7px",
+                                                    cursor: "pointer",
+                                                }}
+                                            ></img>
+                                        </div>
+                                    </div>
                                     <T.ImgTitle>
                                         <img
                                             src={content.imageSrc}
@@ -453,6 +471,9 @@ function Test() {
                                                 <T.Button onClick={moveMain}>
                                                     메인 페이지로 이동
                                                 </T.Button>
+                                                <T.Button onClick={moveBack}>
+                                                    다시하기
+                                                </T.Button>
                                             </T.ButtonContainer>
                                         </div>
                                     </T.Detail>
@@ -474,9 +495,7 @@ function Test() {
                         borderRadius: "10px",
                         boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
                         zIndex: 10,
-                        width: "80%",
-
-                        maxWidth: "400px",
+                        width: "300px",
                     }}
                 >
                     <div
@@ -601,34 +620,81 @@ function Test() {
                         top: "50%",
                         left: "50%",
                         transform: "translate(-50%, -50%)",
-                        backgroundColor: "#000000",
-                        padding: "30px",
-                        paddingTop: "50px",
+                        backgroundColor: "#28272a",
                         borderRadius: "20px",
                         boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
                         zIndex: 10,
-                        width: "80%",
-                        maxWidth: "300px",
+                        width: "250px",
+                        height: "120px",
                         textAlign: "center",
                         color: "white",
+                        fontSize: "12px",
+                        fontWeight: "600",
+                        animation: "slideUp 0.4s ease-in-out",
                     }}
                 >
-                    <p>{alertMessage}</p>
-                    <button
-                        onClick={() => setIsAlertOpen(false)}
+                    <div
                         style={{
-                            background: "#000000",
-                            border: "none",
-                            padding: "10px",
-                            borderRadius: "5px",
-                            cursor: "pointer",
-                            width: "100%",
-                            marginTop: "40px",
-                            color: "#F5F5F5",
+                            display: "flex",
+                            flexDirection: "column",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            height: "100%",
                         }}
                     >
-                        확인
-                    </button>
+                        <style>
+                            {`
+                @keyframes slideUp {
+                    from {
+                        transform: translate(-50%, 100%);
+                        opacity: 0;
+                    }
+                    to {
+                        transform: translate(-50%, -50%);
+                        opacity: 1;
+                    }
+                }
+                @keyframes slideDown {
+                    from {
+                        transform: translate(-50%, -50%);
+                        opacity: 1;
+                    }
+                    to {
+                        transform: translate(-50%, 100%);
+                        opacity: 0;
+                    }
+                }
+            `}
+                        </style>
+                        <div style={{ fontSize: "12px" }}>{alertMessage}</div>
+                        <button
+                            onClick={() => setIsAlertOpen(false)}
+                            style={{
+                                background: "000000",
+                                border: "none",
+                                padding: "6px",
+                                borderRadius: "15px",
+                                cursor: "pointer",
+                                width: "93px",
+                                hegiht: "36px",
+                                color: "#F5F5F5",
+                                marginTop: "15px",
+                                transition: "all 300ms ease-out",
+                                fontSize: "12px",
+                                fontWeight: "600",
+                            }}
+                            onMouseEnter={(e) => {
+                                e.target.style.backgroundColor = "#f5f5f5";
+                                e.target.style.color = "#79212f";
+                            }}
+                            onMouseLeave={(e) => {
+                                e.target.style.backgroundColor = "#28272a";
+                                e.target.style.color = "#F5F5F5";
+                            }}
+                        >
+                            확인
+                        </button>
+                    </div>
                 </div>
             )}
 

@@ -9,30 +9,7 @@ export const Test = styled.div`
     padding: 20px;
 `;
 
-export const Nav = styled.div`
-    margin: 20px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-
-    .Title {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .TopTitle {
-        color: #ffffff;
-        font-size: 15px;
-    }
-
-    .TitleInfo {
-        color: #f7db8d;
-        font-size: 9px;
-        margin-top: 12px;
-    }
-`;
+export const Nav = styled.div``;
 
 export const TestQuestion = styled.div`
     margin: 4%;
@@ -44,7 +21,7 @@ export const TestQuestion = styled.div`
         font-size: 15px;
 
         margin-bottom: 10px;
-        margin-top: 10px;
+        margin-top: 20px;
     }
 
     label {
