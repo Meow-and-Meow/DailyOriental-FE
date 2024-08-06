@@ -102,6 +102,19 @@ export const input = styled.input`
     }
 `;
 
+export const error_message = styled.div`
+    display: flex;
+    width: 203px;
+    font-family: "Pretendard";
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 11.93px;
+    color: #79212f;
+    margin-bottom: 2px;
+    margin-left: 100px;
+    margin-top: -10px;
+`;
+
 export const gender = styled.div`
     display: flex;
     flex-direction: row;
