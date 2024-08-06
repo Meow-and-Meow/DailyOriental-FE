@@ -176,14 +176,15 @@ export const answer_container = styled.div`
 `;
 
 export const answer_text = styled.div`
-    color: rgba(0, 0, 0, 0.25);
+    color: #28272A;
     font-weight: 600;
     font-size: 15px;
-    line-height: 17.9px;
+    line-height: 21px;
     padding-right: 27px;
     padding-top: 17px;
     max-height: 340px;
     overflow-y: scroll;
+
 
 
     ::-webkit-scrollbar {
